@@ -6,7 +6,7 @@ layout: default
 permalink: /turing-complete/
 ---
 
-$$ X \to Y $$
+You are a function mapping $$ X \to Y $$
 
 **Turing Complete**
 
