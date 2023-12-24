@@ -30,7 +30,7 @@ twitter_username: askipio
 github_username:  askipio
 
 # Build settings
-theme: jekyll-theme-midnight
+theme: jekyll-theme-modernist
 plugins:
   - jekyll-remote-theme # add this line to the plugins list if you already have one
 

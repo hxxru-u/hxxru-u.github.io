@@ -11,8 +11,6 @@ Hello!
 
 My name is Alex, but I go by *Haru* [(about me)](https://hxxru.github.io/about)
 
-& this site is under construction—
+& this site is under construction: $ f(x) = 2x + 1 $. 
 
 While you wait, [here is a poem I wrote.](https://hxxru.github.io/poetry.html)
-
-Also, does markdown work? $$ L(\theta^{(t+1)}) \leq L(\theta^{(t)}) +  \nabla L(\theta^{(t)})^T(\theta^{(t+1)} - \theta^{(t)}) + \frac{1}{2} (\theta^{(t+1)} - \theta^{(t)})^T K (\theta^{(t+1)} - \theta^{(t)}) $$
