@@ -5,11 +5,13 @@
 layout: default
 ---
 
-Hello
+![My helpful screenshot](/assets/spirit.jpeg)
 
-My name is Haru [about me](https://hxxru.github.io/about)
+Hello!
 
-& this site is under construction
+My name is Haru [(about me)](https://hxxru.github.io/about)
 
-While you wait, [here is a poem I wrote](https://hxxru.github.io/poetry.html)
+& this site is under construction—
+
+While you wait, [here is a poem I wrote.](https://hxxru.github.io/poetry.html)
 
