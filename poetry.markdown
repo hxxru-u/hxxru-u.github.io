@@ -1,0 +1,31 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: default
+---
+
+**Turing Complete**
+
+In the gray Cartesian room\
+All lines cross at right angles\
+In the corner sits a disco ball\
+Mourning these boundaries\
+A pair of high heels float away\
+To prove its own existence
+
+
+No direction only speed\
+In this jaded music we move\
+The cocktails being served can\
+rewire your brain; we dance\
+plus they come in pretty colors\
+An escape governed by chance
+
+
+This world isn’t real of course\
+But your words are enough to\
+make me feel anything and everything\
+World’s your oyster, whatever, who cares\
+Polygon count? Frame rate? No just watch\
+these teeth marks bloom on your skin
