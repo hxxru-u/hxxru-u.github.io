@@ -5,11 +5,11 @@
 layout: default
 ---
 
-Hello, stranger
+Hello
 
-My name is Haru
+My name is Haru [about me](https://hxxru.github.io/about)
 
 & this site is under construction
 
-While you wait, [here is a poem I wrote](https://askipio.github.io/poetry.html)
+While you wait, [here is a poem I wrote](https://hxxru.github.io/poetry.html)
 
