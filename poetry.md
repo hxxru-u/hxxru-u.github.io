@@ -3,7 +3,10 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: default
+permalink: /turing-complete/
 ---
+
+$$ X \to Y $$
 
 **Turing Complete**
 
