@@ -14,3 +14,5 @@ My name is Alex, but I go by *Haru*: [(about me)](https://hxxru.github.io/about)
 & this site is under construction. 
 
 While you wait, [here is a poem I wrote.](https://hxxru.github.io/turing-complete)
+
+Boober stinky
