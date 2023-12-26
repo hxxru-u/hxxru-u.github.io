@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /maze-124912/
+permalink: /124912/
 ---
 
 
