@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #sidebar {
+            width: 300px;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        #main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>Game of Life</h2>
+        <canvas id="gameOfLife" width="260" height="260"></canvas>
+    </div>
+    <div id="main-content">
+        <img src="/assets/spirit.jpeg" alt="Wallpaper" />
+        <h1>Hello!</h1>
+        <p>This site is under construction.</p>
+    </div>
+
+    <script>
+        // Game of Life
+        class GameOfLife {
+            constructor(width, height, cellSize) {
+                this.width = width;
+                this.height = height;
+                this.cellSize = cellSize;
+                this.cols = Math.floor(width / cellSize);
+                this.rows = Math.floor(height / cellSize);
+                this.grid = this.makeGrid();
+            }
+
+            makeGrid() {
+                return new Array(this.cols).fill(null)
+                    .map(() => new Array(this.rows).fill(null)
+                        .map(() => Math.random() > 0.5));
+            }
+
+            draw(ctx) {
+                ctx.clearRect(0, 0, this.width, this.height);
+                for (let i = 0; i < this.cols; i++) {
+                    for (let j = 0; j < this.rows; j++) {
+                        const x = i * this.cellSize;
+                        const y = j * this.cellSize;
+                        if (this.grid[i][j]) {
+                            ctx.fillStyle = 'black';
+                            ctx.fillRect(x, y, this.cellSize, this.cellSize);
+                        }
+                    }
+                }
+            }
+
+            nextGen() {
+                this.grid = this.grid.map((col, i) =>
+                    col.map((cell, j) => {
+                        const neighbors = this.countNeighbors(i, j);
+                        return neighbors === 3 || (cell && neighbors === 2);
+                    })
+                );
+            }
+
+            countNeighbors(x, y) {
+                let sum = 0;
+                for (let i = -1; i < 2; i++) {
+                    for (let j = -1; j < 2; j++) {
+                        const col = (x + i + this.cols) % this.cols;
+                        const row = (y + j + this.rows) % this.rows;
+                        sum += this.grid[col][row];
+                    }
+                }
+                sum -= this.grid[x][y];
+                return sum;
+            }
+        }
+
+        // Setup and run the game
+        function setupGame() {
+            const canvas = document.getElementById('gameOfLife');
+            const ctx = canvas.getContext('2d');
+            const game = new GameOfLife(canvas.width, canvas.height, 5);
+
+            function animate() {
+                game.draw(ctx);
+                game.nextGen();
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Run setup when the window loads
+        window.onload = setupGame;
+    </script>
+</body>
+</html>
