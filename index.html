@@ -4,37 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Website Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             display: flex;
-            font-family: Arial, sans-serif;
+            font-family: 'Spectral', serif;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
         }
-        #sidebar {
-            width: 300px;
+        .sidebar {
+            width: 200px;
             padding: 20px;
-            background-color: #f0f0f0;
+            background-color: #e6f3ff; /* Light blue background */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            align-items: center; /* Center the content horizontally */
+        }
+        #left-sidebar {
+            order: -1;
         }
         #main-content {
             flex: 1;
             padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         img {
             max-width: 100%;
             height: auto;
         }
+        .gameOfLife {
+            width: 180px;
+            height: 420px;
+            position: relative;
+            z-index: 1;
+            margin: 14px 0 26px;
+        }
+        #playPauseButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #000080;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-family: 'Spectral', serif;
+        }
     </style>
 </head>
 <body>
-    <div id="sidebar">
-        <h2>Game of Life</h2>
-        <canvas id="gameOfLife" width="260" height="260"></canvas>
+    <div id="left-sidebar" class="sidebar">
+        <canvas id="leftGameOfLife" class="gameOfLife"></canvas>
     </div>
+    
     <div id="main-content">
         <img src="/assets/spirit.jpeg" alt="Wallpaper" />
         <h1>Hello!</h1>
         <p>This site is under construction.</p>
+        <button id="playPauseButton">Pause</button>
+    </div>
+    
+    <div id="right-sidebar" class="sidebar">
+        <canvas id="rightGameOfLife" class="gameOfLife"></canvas>
     </div>
 
     <script>
@@ -62,7 +98,7 @@
                         const x = i * this.cellSize;
                         const y = j * this.cellSize;
                         if (this.grid[i][j]) {
-                            ctx.fillStyle = 'black';
+                            ctx.fillStyle = '#000080'; // Dark navy for alive cells
                             ctx.fillRect(x, y, this.cellSize, this.cellSize);
                         }
                     }
@@ -93,22 +129,59 @@
         }
 
         // Setup and run the game
-        function setupGame() {
-            const canvas = document.getElementById('gameOfLife');
+        function setupGame(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            const cellSize = 12;
+            canvas.width = 180; // 15 cells wide
+            canvas.height = 420; // 35 cells tall
+            
             const ctx = canvas.getContext('2d');
-            const game = new GameOfLife(canvas.width, canvas.height, 5);
+            const game = new GameOfLife(canvas.width, canvas.height, cellSize);
 
             function animate() {
                 game.draw(ctx);
                 game.nextGen();
-                requestAnimationFrame(animate);
             }
 
-            animate();
+            return {
+                game: game,
+                animate: animate,
+                ctx: ctx
+            };
+        }
+
+        let leftGame, rightGame;
+        let intervalId;
+        let isPlaying = true;
+
+        function togglePlay() {
+            if (isPlaying) {
+                clearInterval(intervalId);
+                playPauseButton.textContent = 'Play';
+            } else {
+                intervalId = setInterval(() => {
+                    leftGame.animate();
+                    rightGame.animate();
+                }, 500);
+                playPauseButton.textContent = 'Pause';
+            }
+            isPlaying = !isPlaying;
         }
 
         // Run setup when the window loads
-        window.onload = setupGame;
+        window.onload = function() {
+            leftGame = setupGame('leftGameOfLife');
+            rightGame = setupGame('rightGameOfLife');
+
+            const playPauseButton = document.getElementById('playPauseButton');
+            playPauseButton.addEventListener('click', togglePlay);
+
+            // Start the animation
+            intervalId = setInterval(() => {
+                leftGame.animate();
+                rightGame.animate();
+            }, 500);
+        };
     </script>
 </body>
 </html>
