@@ -4,7 +4,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/MathJax.js" type="text/javascript"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']],
+    processEscapes: true,
+    tags: 'ams'
+  },
+  svg: {
+    fontCache: 'global',
+    scale: 1
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
 
