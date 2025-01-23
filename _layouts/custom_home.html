@@ -2,8 +2,8 @@
 layout: archive
 ---
 
-<div class="page__content" markdown="1">
-{{ content }}
+<div class="page__content">
+  {{ content | markdownify }}
 </div>
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
