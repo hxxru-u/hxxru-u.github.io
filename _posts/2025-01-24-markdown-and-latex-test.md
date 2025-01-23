@@ -7,6 +7,7 @@ tags:
   - markdown
   - latex
   - test
+mathjax: true
 ---
 
 This is a test post demonstrating various Markdown and LaTeX features.
