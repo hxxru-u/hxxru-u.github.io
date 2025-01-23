@@ -28,7 +28,7 @@ jobs:
           bundler-cache: true
       
       - name: Install Bundler
-        run: gem install bundler
+        run: gem install bundler:2.3.14
 
       - name: Setup Pages
         id: pages
