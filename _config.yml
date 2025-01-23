@@ -260,6 +260,8 @@ defaults:
       share: false
       related: true
       show_date: true
+      show_categories: false
+      taxonomy: false
   # _pages
   - scope:
       path: "_pages"
