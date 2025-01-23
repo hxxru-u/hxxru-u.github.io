@@ -60,6 +60,48 @@
       this.rows = Math.ceil(this.canvas.height / this.cellSize);
       this.grid = this.createGrid();
     }
+
+    drawHeart(x, y, size) {
+      const topCurveHeight = size * 0.3;
+      
+      // Start at the bottom point
+      this.ctx.beginPath();
+      this.ctx.moveTo(x, y + size * 0.7);
+      
+      // Draw the left curve
+      this.ctx.bezierCurveTo(
+        x - size/2, y + size/4,  // control point 1
+        x - size/2, y - topCurveHeight,  // control point 2
+        x, y  // end point
+      );
+      
+      // Draw the right curve
+      this.ctx.bezierCurveTo(
+        x + size/2, y - topCurveHeight,  // control point 1
+        x + size/2, y + size/4,  // control point 2
+        x, y + size * 0.7  // end point
+      );
+      
+      this.ctx.fill();
+    }
+
+    drawGrid() {
+      // Clear with background color
+      this.ctx.fillStyle = this.colors.background;
+      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      
+      // Draw cells
+      for (let i = 0; i < this.rows; i++) {
+        for (let j = 0; j < this.cols; j++) {
+          if (this.grid[i][j]) {
+            this.ctx.fillStyle = this.colors.cell;
+            const centerX = j * this.cellSize + this.cellSize/2;
+            const centerY = i * this.cellSize + this.cellSize/2;
+            this.drawHeart(centerX, centerY, this.cellSize * 0.8);
+          }
+        }
+      }
+    }
   
     createGrid() {
       const basePattern = [
@@ -119,29 +161,6 @@
       }
       
       return grid;
-    }
-  
-    drawGrid() {
-      // Clear canvas
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      
-      // Draw cells
-      this.ctx.fillStyle = this.colors.cell;
-      for (let i = 0; i < this.rows; i++) {
-        for (let j = 0; j < this.cols; j++) {
-          if (this.grid[i][j]) {
-            this.ctx.beginPath();
-            this.ctx.arc(
-              j * this.cellSize + this.cellSize/2,
-              i * this.cellSize + this.cellSize/2,
-              this.cellSize/3,
-              0,
-              Math.PI * 2
-            );
-            this.ctx.fill();
-          }
-        }
-      }
     }
   
     countNeighbors(row, col) {

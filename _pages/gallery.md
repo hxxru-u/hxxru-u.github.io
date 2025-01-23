@@ -1,6 +1,6 @@
 ---
 title: "Gallery"
-layout: single
+layout: background_game
 permalink: /gallery/
 author_profile: true
 ---
