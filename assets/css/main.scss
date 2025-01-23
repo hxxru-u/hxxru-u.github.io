@@ -4,19 +4,15 @@
 
 @charset "utf-8";
 
+$garamond: "EB Garamond", serif;
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
 /* Custom CSS */
-:root {
-  /* Font customization */
-  --font-family-main: "EB Garamond", serif;
-  --font-family-heading: "EB Garamond", serif;
-}
-
 /* Typography overrides */
 body {
-  font-family: var(--font-family-main);
+  font-family: $garamond;
   line-height: 1.65;
 }
 
@@ -32,12 +28,12 @@ h1, h2, h3, h4, h5, h6,
 .author__name,
 .author__bio,
 .page__footer {
-  font-family: var(--font-family-heading);
+  font-family: $garamond;
   font-weight: 400;
 }
 
 .page__content {
-  font-family: var(--font-family-main);
+  font-family: $garamond;
   
   h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
