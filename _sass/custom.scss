@@ -33,3 +33,16 @@
     }
   }
 }
+
+// Override post title styles
+.archive__item-title {
+  a {
+    color: #ffedc4; // Change this to any color you prefer
+    text-decoration: none; // Remove underline
+    
+    &:hover {
+      text-decoration: none;
+      color: lighten(#ffedc4, 10%);
+    }
+  }
+}
