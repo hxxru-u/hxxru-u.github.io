@@ -5,4 +5,4 @@ permalink: /gallery/
 author_profile: true
 ---
 
-Welcome to my gallery! I'll be adding photos and artwork here soon.
+i'll be adding stuff here ~soon~

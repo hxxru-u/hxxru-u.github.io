@@ -19,7 +19,7 @@ rtl                      : # true, false (default) # turns direction of the page
 title                    : "Haru's Cave"
 title_separator          : "-"
 subtitle                 : 
-name                     : "Haru"
+name                     : "Haru Kim"
 description              : "my blog"
 url                      : "https://hxxru.github.io" # the base hostname & protocol for your site
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -109,32 +109,17 @@ analytics:
     tracking_id          :
     anonymize_ip         : # true, false (default)
 
-# Site Author - commented out to disable author profile
-# author:
-#   name             : "Haru"
-#   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-#   bio              : "looking inwards"
-#   location         : "Somewhere"
-#   email            :
-#   links:
-#     - label: "Email"
-#       icon: "fas fa-fw fa-envelope-square"
-#       # url: "mailto:your.name@email.com"
-#     - label: "Website"
-#       icon: "fas fa-fw fa-link"
-#       # url: "https://your-website.com"
-#     - label: "Twitter"
-#       icon: "fab fa-fw fa-twitter-square"
-#       # url: "https://twitter.com/"
-#     - label: "Facebook"
-#       icon: "fab fa-fw fa-facebook-square"
-#       # url: "https://facebook.com/"
-#     - label: "GitHub"
-#       icon: "fab fa-fw fa-github"
-#       # url: "https://github.com/"
-#     - label: "Instagram"
-#       icon: "fab fa-fw fa-instagram"
-#       # url: "https://instagram.com/"
+# Site Author
+author:
+  name             : "Haru Kim"
+  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "looking inwards"
+  location         : "Somewhere"
+  email            :
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/hxxru"
 
 # Site Footer
 footer:
@@ -208,7 +193,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: Asia/Tokyo
+timezone: Asia/Seoul
 
 # Archives
 category_archive:
@@ -223,6 +208,28 @@ compress_html:
   clippings: all
   ignore:
     envs: development
+
+# Localization
+locale: "en-US"
+title_separator: "-"
+
+# UI text
+words_per_minute: 200
+comments:
+  provider: false
+
+# UI text
+ui-text:
+  en: &DEFAULT_EN
+    follow_label: ""  # Remove the follow label
+  en-US:
+    <<: *DEFAULT_EN
+  en-CA:
+    <<: *DEFAULT_EN
+  en-GB:
+    <<: *DEFAULT_EN
+  en-AU:
+    <<: *DEFAULT_EN
 
 # Defaults
 defaults:
