@@ -262,6 +262,7 @@ defaults:
       show_date: true
       show_categories: false
       taxonomy: false
+      show_pagination: false
   # _pages
   - scope:
       path: "_pages"
