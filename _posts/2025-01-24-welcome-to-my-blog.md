@@ -8,6 +8,4 @@ tags:
   - first post
 ---
 
-Welcome to my new blog!!!!!
-
-Yas
+hi guys

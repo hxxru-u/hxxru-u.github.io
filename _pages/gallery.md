@@ -5,4 +5,4 @@ permalink: /gallery/
 author_profile: true
 ---
 
-i'll be adding stuff here ~soon~
+i will be adding stuff here ~soon~
