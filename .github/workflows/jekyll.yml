@@ -43,8 +43,8 @@ jobs:
           echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $GITHUB_ENV
           git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
           echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> $GITHUB_ENV
-          echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-          source ~/.bashrc
+          echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+          source ~/.bash_profile
       - name: Install Ruby
         run: |
           rbenv install 3.1.4
