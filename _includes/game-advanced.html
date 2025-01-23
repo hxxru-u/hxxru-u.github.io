@@ -85,9 +85,8 @@ class GameOfLife {
   }
 
   drawGrid() {
-    // Clear with background color
-    this.ctx.fillStyle = this.colors.background;
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    // Clear the entire canvas while maintaining transparency
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     
     // Draw cells
     this.ctx.fillStyle = this.colors.cell;
