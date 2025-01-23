@@ -188,33 +188,40 @@ class GameOfLife {
 
   updateGrid() {
     const newGrid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+    let changes = 0;
     
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
         const neighbors = this.countNeighbors(i, j);
-        if (this.grid[i][j]) {
+        const wasAlive = this.grid[i][j];
+        if (wasAlive) {
           // A live cell stays alive if it has 2 or 3 neighbors
           newGrid[i][j] = neighbors === 2 || neighbors === 3;
         } else {
           // A dead cell becomes alive if it has exactly 3 neighbors
           newGrid[i][j] = neighbors === 3;
         }
+        if (wasAlive !== newGrid[i][j]) changes++;
       }
     }
     
     this.grid = newGrid;
+    return changes;
   }
 
   update() {
     if (!this.running) return;
     
-    this.updateGrid();
+    const changes = this.updateGrid();
     this.drawGrid();
+    console.log(`Updated grid with ${changes} changes`);
+    
+    // Schedule next update
     setTimeout(() => {
       if (this.running) {
-        requestAnimationFrame(() => this.update());
+        this.update();
       }
-    }, 200);  // Slowed down animation
+    }, 200);  // Update every 200ms
   }
 
   start() {
