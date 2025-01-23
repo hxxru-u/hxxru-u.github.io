@@ -1,4 +1,11 @@
 ---
 layout: home
 author_profile: true
+entries_layout: grid
 ---
+
+<div class="entries-{{ entries_layout }}">
+  {% for post in site.posts %}
+    {% include archive-single.html type=entries_layout %}
+  {% endfor %}
+</div>

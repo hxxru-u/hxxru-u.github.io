@@ -1,6 +1,6 @@
 ---
 title: "Welcome to My Blog"
-date: 2025-01-24
+date: 2025-01-24T00:00:00+09:00
 categories:
   - blog
 tags:
@@ -8,13 +8,4 @@ tags:
   - first post
 ---
 
-Welcome to my new blog! This is my first post using Jekyll and the Minimal Mistakes theme. I'll be sharing my thoughts and experiences here.
-
-## What to Expect
-
-- Regular updates about my projects
-- Interesting discoveries
-- Technical tutorials
-- And much more!
-
-Stay tuned for more content!
+Welcome to my new blog
