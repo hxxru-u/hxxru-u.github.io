@@ -7,3 +7,41 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+/* Custom CSS */
+:root {
+  /* Font customization */
+  --font-family-main: "EB Garamond", Garamond, "Times New Roman", serif;
+  --font-family-heading: "EB Garamond", Garamond, "Times New Roman", serif;
+}
+
+/* Base styling */
+body {
+  font-family: var(--font-family-main);
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+}
+
+/* Custom link colors */
+.page__content {
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Customize masthead (navigation) */
+.masthead {
+  background-color: #252a34;
+}
+
+/* Customize footer */
+.page__footer {
+  background-color: #252a34;
+  color: #fff;
+}
