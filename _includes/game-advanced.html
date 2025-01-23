@@ -1,214 +1,237 @@
 <!-- Add this to your default layout or the specific layout you're using -->
 <div id="game-of-life" class="game-container">
-    <canvas id="life-canvas"></canvas>
-  </div>
-  
-  <style>
-  .game-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 1;
-  }
-  
-  .game-container canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.15;  /* Adjust this value to make the game more/less visible */
-  }
-  
-  /* Ensure content remains clickable */
-  .site-content {
-    position: relative;
-    z-index: 2;
-  }
-  
-  /* Add this class to any elements that should appear above the game */
-  .above-game {
-    position: relative;
-    z-index: 2;
-  }
-  </style>
-  
-  <script>
-  class GameOfLife {
-    constructor() {
-      this.canvas = document.getElementById('life-canvas');
-      this.ctx = this.canvas.getContext('2d');
-      this.cellSize = 20;  // Larger cells for full-screen
-      this.setupCanvas();
-      this.colors = {
-        background: 'transparent',  // Changed to transparent
-        cell: '#d39ca4',
-        grid: 'transparent'  // Removed grid lines
-      };
-      
-      window.addEventListener('resize', () => this.setupCanvas());
-    }
-  
-    setupCanvas() {
-      // Set canvas size to match window size
-      this.canvas.width = window.innerWidth;
-      this.canvas.height = window.innerHeight;
-      this.cols = Math.ceil(this.canvas.width / this.cellSize);
-      this.rows = Math.ceil(this.canvas.height / this.cellSize);
-      this.grid = this.createGrid();
-    }
+  <canvas id="life-canvas"></canvas>
+</div>
 
-    drawHeart(x, y, size) {
-      const topCurveHeight = size * 0.3;
-      
-      // Start at the bottom point
-      this.ctx.beginPath();
-      this.ctx.moveTo(x, y + size * 0.7);
-      
-      // Draw the left curve
-      this.ctx.bezierCurveTo(
-        x - size/2, y + size/4,  // control point 1
-        x - size/2, y - topCurveHeight,  // control point 2
-        x, y  // end point
-      );
-      
-      // Draw the right curve
-      this.ctx.bezierCurveTo(
-        x + size/2, y - topCurveHeight,  // control point 1
-        x + size/2, y + size/4,  // control point 2
-        x, y + size * 0.7  // end point
-      );
-      
-      this.ctx.fill();
-    }
+<style>
+.game-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
 
-    drawGrid() {
-      // Clear with background color
-      this.ctx.fillStyle = this.colors.background;
-      this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-      
-      // Draw cells
-      for (let i = 0; i < this.rows; i++) {
-        for (let j = 0; j < this.cols; j++) {
-          if (this.grid[i][j]) {
-            this.ctx.fillStyle = this.colors.cell;
-            const centerX = j * this.cellSize + this.cellSize/2;
-            const centerY = i * this.cellSize + this.cellSize/2;
-            this.drawHeart(centerX, centerY, this.cellSize * 0.8);
-          }
+.game-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;  /* Adjust this value to make the game more/less visible */
+}
+
+/* Ensure content remains clickable */
+.site-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Add this class to any elements that should appear above the game */
+.above-game {
+  position: relative;
+  z-index: 2;
+}
+</style>
+
+<script>
+class GameOfLife {
+  constructor() {
+    this.canvas = document.getElementById('life-canvas');
+    this.ctx = this.canvas.getContext('2d');
+    this.cellSize = 20;  // Larger cells for full-screen
+    this.setupCanvas();
+    this.colors = {
+      background: 'transparent',
+      cell: '#d39ca4',
+      grid: 'transparent'
+    };
+    this.running = false;
+    
+    // 8-bit heart pattern (1 represents a pixel)
+    this.heartPattern = [
+      [0,1,1,0,0,0,1,1,0],
+      [1,1,1,1,0,1,1,1,1],
+      [1,1,1,1,1,1,1,1,1],
+      [1,1,1,1,1,1,1,1,1],
+      [0,1,1,1,1,1,1,1,0],
+      [0,0,1,1,1,1,1,0,0],
+      [0,0,0,1,1,1,0,0,0],
+      [0,0,0,0,1,0,0,0,0]
+    ];
+    
+    window.addEventListener('resize', () => this.setupCanvas());
+  }
+
+  drawPixelHeart(x, y, size) {
+    const pixelSize = size / this.heartPattern[0].length;
+    const offsetX = x - (size / 2);
+    const offsetY = y - (size / 2);
+    
+    for (let i = 0; i < this.heartPattern.length; i++) {
+      for (let j = 0; j < this.heartPattern[i].length; j++) {
+        if (this.heartPattern[i][j]) {
+          this.ctx.fillRect(
+            offsetX + j * pixelSize,
+            offsetY + i * pixelSize,
+            pixelSize,
+            pixelSize
+          );
         }
       }
     }
-  
-    createGrid() {
-      const basePattern = [
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,0],
-        [0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0],
-        [0,0,0,0,1,0,0,0,0,1,0,1,1,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-      ];
-  
-      const patternHeight = basePattern.length;
-      const patternWidth = basePattern[0].length;
-      
-      // Create empty grid
-      const grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
-      
-      // Calculate how many patterns we can fit horizontally and vertically
-      const horizontalPatterns = Math.ceil(this.cols / (patternWidth * 1.5));
-      const verticalPatterns = Math.ceil(this.rows / (patternHeight * 1.5));
-      
-      // Place patterns in a grid with some spacing
-      for (let vpat = 0; vpat < verticalPatterns; vpat++) {
-        for (let hpat = 0; hpat < horizontalPatterns; hpat++) {
-          // Add some randomness to the starting position of each pattern
-          const offsetX = Math.floor(Math.random() * 5);
-          const offsetY = Math.floor(Math.random() * 5);
-          
-          const startX = Math.floor(hpat * patternWidth * 1.5) + offsetX;
-          const startY = Math.floor(vpat * patternHeight * 1.5) + offsetY;
-          
-          // Only place the pattern with 70% probability
-          if (Math.random() < 0.7) {
-            // Copy pattern to grid
-            for (let i = 0; i < patternHeight; i++) {
-              for (let j = 0; j < patternWidth; j++) {
-                const row = (startY + i) % this.rows;
-                const col = (startX + j) % this.cols;
-                if (basePattern[i][j]) {
-                  grid[row][col] = true;
-                }
+  }
+
+  drawGrid() {
+    // Clear with background color
+    this.ctx.fillStyle = this.colors.background;
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    
+    // Draw cells
+    this.ctx.fillStyle = this.colors.cell;
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        if (this.grid[i][j]) {
+          const centerX = j * this.cellSize + this.cellSize/2;
+          const centerY = i * this.cellSize + this.cellSize/2;
+          this.drawPixelHeart(centerX, centerY, this.cellSize * 0.9);
+        }
+      }
+    }
+  }
+
+  setupCanvas() {
+    // Set canvas size to match window size
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+    this.cols = Math.ceil(this.canvas.width / this.cellSize);
+    this.rows = Math.ceil(this.canvas.height / this.cellSize);
+    this.grid = this.createGrid();
+  }
+
+  createGrid() {
+    const basePattern = [
+      [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,0],
+      [0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0],
+      [0,0,0,0,1,0,0,0,0,1,0,1,1,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    ];
+
+    const patternHeight = basePattern.length;
+    const patternWidth = basePattern[0].length;
+    
+    // Create empty grid
+    const grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+    
+    // Calculate how many patterns we can fit horizontally and vertically
+    const horizontalPatterns = Math.ceil(this.cols / (patternWidth * 1.5));
+    const verticalPatterns = Math.ceil(this.rows / (patternHeight * 1.5));
+    
+    // Place patterns in a grid with some spacing
+    for (let vpat = 0; vpat < verticalPatterns; vpat++) {
+      for (let hpat = 0; hpat < horizontalPatterns; hpat++) {
+        // Add some randomness to the starting position of each pattern
+        const offsetX = Math.floor(Math.random() * 5);
+        const offsetY = Math.floor(Math.random() * 5);
+        
+        const startX = Math.floor(hpat * patternWidth * 1.5) + offsetX;
+        const startY = Math.floor(vpat * patternHeight * 1.5) + offsetY;
+        
+        // Only place the pattern with 70% probability
+        if (Math.random() < 0.7) {
+          // Copy pattern to grid
+          for (let i = 0; i < patternHeight; i++) {
+            for (let j = 0; j < patternWidth; j++) {
+              const row = (startY + i) % this.rows;
+              const col = (startX + j) % this.cols;
+              if (basePattern[i][j]) {
+                grid[row][col] = true;
               }
             }
           }
         }
       }
-      
-      return grid;
     }
-  
-    countNeighbors(row, col) {
-      let count = 0;
-      for (let i = -1; i <= 1; i++) {
-        for (let j = -1; j <= 1; j++) {
-          if (i === 0 && j === 0) continue;
-          
-          const newRow = (row + i + this.rows) % this.rows;
-          const newCol = (col + j + this.cols) % this.cols;
-          
-          if (this.grid[newRow][newCol]) count++;
+    
+    return grid;
+  }
+
+  countNeighbors(row, col) {
+    let count = 0;
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        if (i === 0 && j === 0) continue;
+        
+        const newRow = (row + i + this.rows) % this.rows;
+        const newCol = (col + j + this.cols) % this.cols;
+        
+        if (this.grid[newRow][newCol]) count++;
+      }
+    }
+    return count;
+  }
+
+  updateGrid() {
+    const newGrid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+    
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        const neighbors = this.countNeighbors(i, j);
+        if (this.grid[i][j]) {
+          // A live cell stays alive if it has 2 or 3 neighbors
+          newGrid[i][j] = neighbors === 2 || neighbors === 3;
+        } else {
+          // A dead cell becomes alive if it has exactly 3 neighbors
+          newGrid[i][j] = neighbors === 3;
         }
       }
-      return count;
     }
-  
-    updateGrid() {
-      const newGrid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
-      
-      for (let i = 0; i < this.rows; i++) {
-        for (let j = 0; j < this.cols; j++) {
-          const neighbors = this.countNeighbors(i, j);
-          if (this.grid[i][j]) {
-            newGrid[i][j] = neighbors === 2 || neighbors === 3;
-          } else {
-            newGrid[i][j] = neighbors === 3;
-          }
-        }
+    
+    this.grid = newGrid;
+  }
+
+  update() {
+    if (!this.running) return;
+    
+    this.updateGrid();
+    this.drawGrid();
+    setTimeout(() => {
+      if (this.running) {
+        requestAnimationFrame(() => this.update());
       }
-      
-      this.grid = newGrid;
-    }
-  
-    update() {
-      this.updateGrid();
-      this.drawGrid();
-      requestAnimationFrame(() => setTimeout(() => this.update(), 200));  // Slowed down animation
-    }
-  
-    start() {
+    }, 200);  // Slowed down animation
+  }
+
+  start() {
+    if (!this.running) {
+      this.running = true;
       this.update();
     }
   }
-  
-  // Initialize and start the game when the page loads
-  document.addEventListener('DOMContentLoaded', () => {
-    const game = new GameOfLife();
-    game.start();
-  });
-  </script>
+
+  stop() {
+    this.running = false;
+  }
+}
+
+// Initialize and start the game when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  const game = new GameOfLife();
+  game.start();
+});
+</script>
