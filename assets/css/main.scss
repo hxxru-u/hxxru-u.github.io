@@ -11,37 +11,49 @@ search: false
 /* Custom CSS */
 :root {
   /* Font customization */
-  --font-family-main: "EB Garamond", Garamond, "Times New Roman", serif;
-  --font-family-heading: "EB Garamond", Garamond, "Times New Roman", serif;
+  --font-family-main: "EB Garamond", serif;
+  --font-family-heading: "EB Garamond", serif;
 }
 
-/* Base styling */
+/* Typography overrides */
 body {
   font-family: var(--font-family-main);
   line-height: 1.65;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,
+.site-title,
+.page__title,
+.page__meta,
+.archive__item-title,
+.toc__menu,
+.nav__title,
+.greedy-nav a,
+.sidebar p,
+.author__name,
+.author__bio,
+.page__footer {
   font-family: var(--font-family-heading);
+  font-weight: 400;
 }
 
-/* Custom link colors */
 .page__content {
+  font-family: var(--font-family-main);
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+  }
+  
+  strong {
+    font-weight: 500;
+  }
+  
   a {
     text-decoration: none;
+    font-weight: 400;
+    
     &:hover {
       text-decoration: underline;
     }
   }
-}
-
-/* Customize masthead (navigation) */
-.masthead {
-  background-color: #252a34;
-}
-
-/* Customize footer */
-.page__footer {
-  background-color: #252a34;
-  color: #fff;
 }
