@@ -217,9 +217,12 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
-year_archive:
-  type: liquid
-  path: /posts/
+
+# HTML Compression
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
 
 # Defaults
 defaults:

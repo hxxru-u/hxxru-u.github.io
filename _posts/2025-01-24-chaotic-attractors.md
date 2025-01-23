@@ -6,7 +6,9 @@ categories:
 tags:
   - Chaos Theory
   - Dynamical Systems
-  - Mathematical Analysis
+  - Mathematics
+  - Differential Equations
+  - Fractals
 mathjax: true
 ---
 
