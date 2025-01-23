@@ -130,44 +130,44 @@ $$
 4. **Physics and Engineering**
    
    Maxwell's equations:
-   $$\begin{align}
-   \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\
-   \nabla \cdot \mathbf{B} &= 0 \\
-   \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
-   \nabla \times \mathbf{B} &= \mu_0\left(\mathbf{J} + \varepsilon_0\frac{\partial \mathbf{E}}{\partial t}\right)
-   \end{align}$$
+   \begin{align}
+   \nabla \cdot \bold{E} &= \frac{\rho}{\varepsilon_0} \\
+   \nabla \cdot \bold{B} &= 0 \\
+   \nabla \times \bold{E} &= -\frac{\partial \bold{B}}{\partial t} \\
+   \nabla \times \bold{B} &= \mu_0\left(\bold{J} + \varepsilon_0\frac{\partial \bold{E}}{\partial t}\right)
+   \end{align}
 
 5. **Probability and Statistics**
    
    Normal distribution:
-   $$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+   \[f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]
 
    Binomial coefficient:
-   $$\binom{n}{k} = \frac{n!}{k!(n-k)!}$$
+   \[\binom{n}{k} = \frac{n!}{k!(n-k)!}\]
 
 6. **Complex Analysis**
    
    Cauchy's integral formula:
-   $$f(a) = \frac{1}{2\pi i} \oint_C \frac{f(z)}{z-a}\,dz$$
+   \[f(a) = \frac{1}{2\pi i} \oint_C \frac{f(z)}{z-a}\,dz\]
 
    Residue theorem:
-   $$\oint_C f(z)\,dz = 2\pi i \sum_{k=1}^n \operatorname{Res}(f,a_k)$$
+   \[\oint_C f(z)\,dz = 2\pi i \sum_{k=1}^n \operatorname{Res}(f,a_k)\]
 
 7. **Quantum Mechanics**
    
    Schrödinger equation:
-   $$i\hbar\frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \left[-\frac{\hbar^2}{2m}\nabla^2 + V(\mathbf{r},t)\right]\Psi(\mathbf{r},t)$$
+   \[i\hbar\frac{\partial}{\partial t}\Psi(\bold{r},t) = \left[-\frac{\hbar^2}{2m}\nabla^2 + V(\bold{r},t)\right]\Psi(\bold{r},t)\]
 
    Dirac notation:
-   $$\langle\psi|\hat{H}|\phi\rangle = \int_{-\infty}^{\infty} \psi^*(x)\hat{H}\phi(x)\,dx$$
+   \[\langle\psi|\hat{H}|\phi\rangle = \int_{-\infty}^{\infty} \psi^*(x)\hat{H}\phi(x)\,dx\]
 
 8. **Differential Geometry**
    
    Christoffel symbols:
-   $$\Gamma^k_{ij} = \frac{1}{2}g^{kl}\left(\frac{\partial g_{jl}}{\partial x^i} + \frac{\partial g_{il}}{\partial x^j} - \frac{\partial g_{ij}}{\partial x^l}\right)$$
+   \[\Gamma^k_{ij} = \frac{1}{2}g^{kl}\left(\frac{\partial g_{jl}}{\partial x^i} + \frac{\partial g_{il}}{\partial x^j} - \frac{\partial g_{ij}}{\partial x^l}\right)\]
 
    Riemann curvature tensor:
-   $$R^a_{bcd} = \partial_c\Gamma^a_{bd} - \partial_d\Gamma^a_{bc} + \Gamma^e_{bd}\Gamma^a_{ce} - \Gamma^e_{bc}\Gamma^a_{de}$$
+   \[R^a_{bcd} = \partial_c\Gamma^a_{bd} - \partial_d\Gamma^a_{bc} + \Gamma^e_{bd}\Gamma^a_{ce} - \Gamma^e_{bc}\Gamma^a_{de}\]
 
 ## Links and Images
 

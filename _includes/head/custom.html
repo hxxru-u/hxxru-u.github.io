@@ -16,11 +16,19 @@ window.MathJax = {
     inlineMath: [['$', '$']],
     displayMath: [['$$', '$$'], ['\\[', '\\]']],
     processEscapes: true,
-    tags: 'ams'
+    tags: 'ams',
+    packages: {'[+]': ['ams', 'noerrors', 'physics', 'color', 'boldsymbol']},
+    macros: {
+      RR: "{\\mathbb{R}}",
+      bold: ["{\\boldsymbol{#1}}", 1]
+    }
   },
   svg: {
     fontCache: 'global',
     scale: 1
+  },
+  loader: {
+    load: ['[tex]/ams', '[tex]/noerrors', '[tex]/physics', '[tex]/color', '[tex]/boldsymbol']
   }
 };
 </script>
