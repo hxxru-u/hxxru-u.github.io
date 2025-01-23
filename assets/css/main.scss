@@ -6,8 +6,8 @@
 
 $garamond: "EB Garamond", serif;
 
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
-@import "minimal-mistakes"; // main partials
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
 @import "custom"; // custom styles
 
 /* Custom CSS */
