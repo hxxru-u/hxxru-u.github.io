@@ -1,51 +1,33 @@
 @charset "utf-8";
 
+/* Variables */
 $garamond: "EB Garamond", serif;
 
+/* Override theme defaults */
+$global-font-family: $garamond;
+$header-font-family: $garamond;
+$caption-font-family: $garamond;
+
+/* Import theme */
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
 @import "custom"; // custom styles
 
-/* Custom CSS */
-/* Typography overrides */
+/* Custom overrides */
 body {
   font-family: $garamond;
-  line-height: 1.65;
-}
-
-h1, h2, h3, h4, h5, h6,
-.site-title,
-.page__title,
-.page__meta,
-.archive__item-title,
-.toc__menu,
-.nav__title,
-.greedy-nav a,
-.sidebar p,
-.author__name,
-.author__bio,
-.page__footer {
-  font-family: $garamond;
-  font-weight: 400;
 }
 
 .page__content {
   font-family: $garamond;
   
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 400;
+  p, li, dl {
+    font-family: $garamond;
   }
-  
-  strong {
-    font-weight: 500;
-  }
-  
-  a {
-    text-decoration: none;
-    font-weight: 400;
-    
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+}
+
+.page__title,
+.page__meta,
+.archive__item-title {
+  font-family: $garamond;
 }
