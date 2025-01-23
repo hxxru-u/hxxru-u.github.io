@@ -1,0 +1,113 @@
+<!-- Include this in your Jekyll sidebar layout -->
+<div id="game-of-life" class="sidebar-widget">
+    <canvas id="life-canvas" width="200" height="200"></canvas>
+  </div>
+  
+  <script>
+  class GameOfLife {
+    constructor(canvasId, cellSize = 10) {
+      this.canvas = document.getElementById(canvasId);
+      this.ctx = this.canvas.getContext('2d');
+      this.cellSize = cellSize;
+      this.cols = Math.floor(this.canvas.width / cellSize);
+      this.rows = Math.floor(this.canvas.height / cellSize);
+      this.grid = this.createGrid();
+      this.running = false;
+    }
+  
+    createGrid() {
+      return Array(this.rows).fill().map(() => 
+        Array(this.cols).fill().map(() => Math.random() > 0.7)
+      );
+    }
+  
+    drawGrid() {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      
+      for (let i = 0; i < this.rows; i++) {
+        for (let j = 0; j < this.cols; j++) {
+          if (this.grid[i][j]) {
+            this.ctx.fillStyle = '#333';
+            this.ctx.fillRect(
+              j * this.cellSize,
+              i * this.cellSize,
+              this.cellSize - 1,
+              this.cellSize - 1
+            );
+          }
+        }
+      }
+    }
+  
+    countNeighbors(row, col) {
+      let count = 0;
+      for (let i = -1; i <= 1; i++) {
+        for (let j = -1; j <= 1; j++) {
+          if (i === 0 && j === 0) continue;
+          
+          const newRow = (row + i + this.rows) % this.rows;
+          const newCol = (col + j + this.cols) % this.cols;
+          
+          if (this.grid[newRow][newCol]) count++;
+        }
+      }
+      return count;
+    }
+  
+    updateGrid() {
+      const newGrid = this.grid.map((row, i) =>
+        row.map((cell, j) => {
+          const neighbors = this.countNeighbors(i, j);
+          return neighbors === 3 || (cell && neighbors === 2);
+        })
+      );
+      this.grid = newGrid;
+    }
+  
+    start() {
+      if (!this.running) {
+        this.running = true;
+        this.update();
+      }
+    }
+  
+    stop() {
+      this.running = false;
+    }
+  
+    reset() {
+      this.grid = this.createGrid();
+      this.drawGrid();
+    }
+  
+    update() {
+      if (!this.running) return;
+      
+      this.updateGrid();
+      this.drawGrid();
+      requestAnimationFrame(() => this.update());
+    }
+  }
+  
+  // Initialize and start the game when the page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const game = new GameOfLife('life-canvas');
+    game.start();
+  });
+  </script>
+  
+  <style>
+  #game-of-life {
+    background: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+  }
+  
+  #life-canvas {
+    width: 200px;
+    height: 200px;
+    display: block;
+  }
+  </style>

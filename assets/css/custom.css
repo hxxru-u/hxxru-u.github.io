@@ -1,0 +1,19 @@
+/* Game of Life styles */
+.sidebar-widget {
+  margin-top: 2em;
+  padding: 1em;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+#game-of-life {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#life-canvas {
+  border: 1px solid #ddd;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
