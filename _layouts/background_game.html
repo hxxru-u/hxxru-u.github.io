@@ -6,7 +6,7 @@ layout: archive
 
 <div class="site-content">
   <div class="page__content">
-    {{ content }}
+    {{ content | markdownify }}
   </div>
 
   {% if page.type == "home" %}
