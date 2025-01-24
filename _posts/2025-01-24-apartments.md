@@ -1,13 +1,12 @@
 ---
 title: "Apartments"
 date: 2025-01-24
-layout: single
-game: true
+layout: background_game
 tags:
   - Creative Practice
   - Poetry
   - Translation
-excerpt: ""
+excerpt: "it is what it is"
 ---
 
 
