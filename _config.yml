@@ -109,18 +109,18 @@ analytics:
     tracking_id          :
     anonymize_ip         : # true, false (default)
 
-# Site Author
-author:
-  name             : "Haru Kim"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : ""
-  location         : ""
-  email           : 
-  links:
-    - label: ""
-      icon: ""
-      url: ""
-  follow: false
+# Site Author - commented out to disable author profile
+# author:
+#   name             : "Haru Kim"
+#   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+#   bio              : ""
+#   location         : ""
+#   email           : 
+#   links:
+#     - label: ""
+#       icon: ""
+#       url: ""
+#   follow: false
 
 # Site Footer
 footer:
