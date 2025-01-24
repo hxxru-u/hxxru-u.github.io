@@ -6,6 +6,7 @@
 
 /* Import custom skin variables first */
 @import "custom-skin";
+@import "custom-post";
 
 /* Import theme */
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";

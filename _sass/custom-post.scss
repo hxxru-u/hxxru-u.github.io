@@ -1,0 +1,15 @@
+.page__content {
+  max-width: 45em;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+.post-abstract {
+  font-style: italic;
+  color: $text-color;
+  opacity: 0.8;
+  margin: 2em 0;
+  padding: 1em 2em;
+  border-left: 3px solid $text-color;
+  background-color: rgba(mix(#fff, $text-color, 90%), 0.25);
+}
