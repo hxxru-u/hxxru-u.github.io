@@ -23,3 +23,12 @@ $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
 .sidebar.sticky {
   display: none !important;
 }
+
+// Justify text in posts
+.page__content {
+  text-align: justify;
+  
+  p {
+    text-align: justify;
+  }
+}

@@ -7,8 +7,6 @@ tags:
   - Poetry
 ---
 
-**Profilometry**
-
 
 Galileo and Giraffe and I were walking home from work & it was a gig in the nicer part of the city we had just started as line cooks at this fancy restaurant that none of our friends would ever go to, we were learning that Friday evenings were twice as busy as usual with order after order of SALAMANDER SOUPE and pepperoni pizza—our patrons were gracious paying 10× markup for the vintage house wine 
 which we knew was poured straight out of a box = not entirely unlike tapping sap with a spile
