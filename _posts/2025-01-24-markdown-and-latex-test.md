@@ -63,10 +63,10 @@ Inline equation: $E = mc^2$
 Display equation:
 
 $$
-\begin{align*}
+
 \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
 \nabla \times \mathbf{B} &= \mu_0\left(\mathbf{J} + \epsilon_0\frac{\partial \mathbf{E}}{\partial t}\right)
-\end{align*}
+
 $$
 
 A more complex example:
@@ -104,22 +104,22 @@ $$
 2. **Matrices and Determinants**
    
    Matrix with brackets:
-   \[
+   $$
    \begin{bmatrix} 
    a_{11} & a_{12} & a_{13} \\
    a_{21} & a_{22} & a_{23} \\
    a_{31} & a_{32} & a_{33}
    \end{bmatrix}
-   \]
+   $$
 
    Determinant:
-   \[
+   $$
    \det(A) = \begin{vmatrix}
    a & b & c \\
    d & e & f \\
    g & h & i
    \end{vmatrix} = aei + bfg + cdh - ceg - bdi - afh
-   \]
+   $$
 
 3. **Series and Sums**
    

@@ -67,11 +67,3 @@ $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
     text-decoration: underline;
   }
 }
-
-// Style masthead menu items
-.masthead__menu-item {
-  font-size: $type-size-9;
-  font-family: $garamond;
-  letter-spacing: 1px;
-  font-weight: 300;
-}

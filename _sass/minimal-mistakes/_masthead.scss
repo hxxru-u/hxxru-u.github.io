@@ -86,6 +86,10 @@
   display: block;
   list-style-type: none;
   white-space: nowrap;
+  font-size: $type-size-9;
+  font-family: $garamond;
+  letter-spacing: 1px;
+  font-weight: 300;
 
   &--lg {
     padding-inline-end: 2em;
