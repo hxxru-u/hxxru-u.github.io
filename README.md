@@ -25,3 +25,7 @@
 - [ ] optimize typography in general
 
 - [ ] optimize website development workflow
+
+- [ ] multilingual journal-y posts
+
+- [ ] 

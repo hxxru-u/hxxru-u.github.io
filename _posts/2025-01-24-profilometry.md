@@ -1,6 +1,5 @@
 ---
 title: "Profilometry"
-date: 2025-01-24T22:30:09+09:00
 layout: background_game
 tags:
   - Creative Practice

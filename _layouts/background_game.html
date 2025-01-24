@@ -19,12 +19,14 @@ layout: archive
       </div>
     {% endif %}
     
-    <div class="page__meta">
-      <p class="page__date">
-        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-        {{ page.date | date: "%B %d, %Y" }}
-      </p>
-    </div>
+    {% if page.date %}
+      <div class="page__meta">
+        <p class="page__date">
+          <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+          {{ page.date | date: "%B %d, %Y" }}
+        </p>
+      </div>
+    {% endif %}
   {% endif %}
 
   {% if page.type == "home" %}
