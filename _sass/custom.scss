@@ -39,19 +39,6 @@
   font-family: $garamond;
 }
 
-// Override post title styles
-.archive__item-title {
-  a {
-    color: #ffedc4; // Change this to any color you prefer
-    text-decoration: none; // Remove underline
-    
-    &:hover {
-      text-decoration: none;
-      color: lighten(#ffedc4, 10%);
-    }
-  }
-}
-
 // Soften code blocks
 div.highlighter-rouge {
   background: #f8f5f5;
@@ -64,14 +51,7 @@ div.highlighter-rouge {
   }
 }
 
-// Inline code
-code.highlighter-rouge {
-  background: #f8f5f5;
-  color: #5c4f4f;
-  border: 1px solid #e9dcdc;
-}
-
-// Hide follow button
-.sidebar .author__urls-wrapper button {
+// Hide sticky sidebar completely
+.sidebar.sticky {
   display: none !important;
 }
