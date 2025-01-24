@@ -18,7 +18,7 @@ locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "Haru's Cave"
 title_separator          : "-"
-subtitle                 : 
+subtitle                 : "looking inwards"
 name                     : "Haru Kim"
 description              : "my blog"
 url                      : "https://hxxru.github.io" # the base hostname & protocol for your site
