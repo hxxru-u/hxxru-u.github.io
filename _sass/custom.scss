@@ -34,6 +34,11 @@
   }
 }
 
+// Use Garamond for masthead
+.masthead__inner-wrap {
+  font-family: $garamond;
+}
+
 // Override post title styles
 .archive__item-title {
   a {
