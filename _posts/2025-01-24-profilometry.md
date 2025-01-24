@@ -29,4 +29,5 @@ Galileo was still outside watching the metal birds not fall to the ground
 
 after I tucked Giraffe in I folded my laundry
 & listened to raindrops drumming the window while licking my scales clean 
+
 they felt very sturdy

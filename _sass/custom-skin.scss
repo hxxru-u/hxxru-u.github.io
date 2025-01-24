@@ -32,3 +32,23 @@ $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
     text-align: justify;
   }
 }
+
+// Style tags
+.page__tags {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  color: $text-color;
+  
+  .fa-tags {
+    margin-right: 0.5em;
+  }
+  
+  .page__tag {
+    color: $text-color;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

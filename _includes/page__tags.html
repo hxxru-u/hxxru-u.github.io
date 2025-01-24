@@ -1,0 +1,9 @@
+{% assign document = post | default: page %}
+{% if document.tags %}
+  <p class="page__tags">
+    <i class="fas fa-tags" aria-hidden="true"></i>
+    {% for tag in document.tags %}
+      <a href="/tags/#{{ tag | slugify }}" class="page__tag">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+  </p>
+{% endif %}

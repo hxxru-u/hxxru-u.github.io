@@ -5,6 +5,15 @@ layout: archive
 {% include game-advanced.html %}
 
 <div class="site-content">
+  {% if page.type != "home" and page.tags %}
+    <div class="page__tags">
+      <i class="fas fa-tags" aria-hidden="true"></i>
+      {% for tag in page.tags %}
+        <a href="/tags/#{{ tag | slugify }}" class="page__tag">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    </div>
+  {% endif %}
+  
   <div class="page__content">
     {{ content | markdownify }}
   </div>
