@@ -51,3 +51,22 @@
     }
   }
 }
+
+// Soften code blocks
+div.highlighter-rouge {
+  background: #f8f5f5;
+  
+  pre.highlight {
+    background: #f8f5f5;
+    border: 1px solid #e9dcdc;
+    border-radius: 4px;
+    color: #5c4f4f;
+  }
+}
+
+// Inline code
+code.highlighter-rouge {
+  background: #f8f5f5;
+  color: #5c4f4f;
+  border: 1px solid #e9dcdc;
+}
