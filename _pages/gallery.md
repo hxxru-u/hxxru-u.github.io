@@ -1,7 +1,7 @@
 ---
 title: "Gallery"
 permalink: /gallery/
-layout: background_game
+layout: single
 author_profile: false
 classes: wide
 ---
