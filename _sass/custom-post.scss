@@ -4,6 +4,13 @@
 
   // Center-align by default
   margin: 0 auto;
+
+  // Override blockquote margins to prevent layout shift
+  blockquote {
+    margin: 2em 0;
+    padding: 0 1em;
+    border-left: 0.25em solid $primary-color;
+  }
 }
 
 // Left-align for posts with mathjax
