@@ -4,11 +4,8 @@ date: 2025-01-24
 categories:
   - Mathematics
 tags:
-  - Chaos Theory
   - Dynamical Systems
   - Mathematics
-  - Differential Equations
-  - Fractals
 mathjax: true
 ---
 

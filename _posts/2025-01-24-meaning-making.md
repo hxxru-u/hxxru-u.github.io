@@ -3,9 +3,9 @@ title: "Meaning Making"
 categories:
   - blog
 tags:
-  - self
-  - creative practice
-  - world modeling
+  - Self
+  - Creative Practice
+  - World Modeling
 ---
 
 These are my thoughts on *what art is*, and why it is so fundamental to my worldview.
