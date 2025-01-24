@@ -84,8 +84,8 @@ class GameOfLife {
       [0,0,0,0,1,0,0,0,0]
     ];
     
-    // Track cell states
-    this.previousGrid = null;
+    // Track new cells
+    this.newCells = new Set();
     
     window.addEventListener('resize', () => this.setupCanvas());
   }
@@ -96,7 +96,6 @@ class GameOfLife {
     this.cols = Math.ceil(this.canvas.width / this.cellSize);
     this.rows = Math.ceil(this.canvas.height / this.cellSize);
     this.grid = this.createGrid();
-    this.previousGrid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
   }
 
   createGrid() {
@@ -159,12 +158,10 @@ class GameOfLife {
     return grid;
   }
 
-  drawPixelHeart(x, y, size, isNew) {
+  drawPixelHeart(x, y, size) {
     const pixelSize = size / this.heartPattern[0].length;
     const offsetX = x - (size / 2);
     const offsetY = y - (size / 2);
-    
-    this.ctx.fillStyle = isNew ? this.colors.newCell : this.colors.cell;
     
     for (let i = 0; i < this.heartPattern.length; i++) {
       for (let j = 0; j < this.heartPattern[i].length; j++) {
@@ -181,6 +178,7 @@ class GameOfLife {
   }
 
   drawGrid() {
+    // Clear the entire canvas while maintaining transparency
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     
     // Draw cells
@@ -189,14 +187,9 @@ class GameOfLife {
         if (this.grid[i][j]) {
           const centerX = j * this.cellSize + this.cellSize/2;
           const centerY = i * this.cellSize + this.cellSize/2;
-          
-          // Set color based on whether cell is new
-          this.ctx.fillStyle = !this.previousGrid[i][j] ? '#f54242' : '#d39ca4';
-          
-          // Draw the cell
-          this.ctx.beginPath();
-          this.ctx.arc(centerX, centerY, this.cellSize/3, 0, Math.PI * 2);
-          this.ctx.fill();
+          // Use different color for new cells
+          this.ctx.fillStyle = this.newCells.has(`${i},${j}`) ? this.colors.newCell : this.colors.cell;
+          this.drawPixelHeart(centerX, centerY, this.cellSize * 0.9);
         }
       }
     }
@@ -216,10 +209,8 @@ class GameOfLife {
   }
 
   updateGrid() {
-    // Store current state
-    this.previousGrid = this.grid.map(row => [...row]);
-    
     const newGrid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+    this.newCells.clear(); // Clear the set of new cells
     
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
@@ -230,6 +221,10 @@ class GameOfLife {
         } else {
           // A dead cell becomes alive if it has exactly 3 neighbors
           newGrid[i][j] = neighbors === 3;
+          // If this is a new cell, add it to the set
+          if (newGrid[i][j]) {
+            this.newCells.add(`${i},${j}`);
+          }
         }
       }
     }
