@@ -6,6 +6,7 @@ tags:
   - Dynamical Systems
   - Automata Theory
   - Game of Life
+excerpt: "On cellular automata."
 ---
 
 Conway's Game of Life is a perfect example of how simple rules can create complex behavior. It's a cellular automaton where each cell follows just four rules:

@@ -6,6 +6,7 @@ tags:
   - Self
   - Creative Practice
   - World Modeling
+excerpt: "my take on art and meaning"
 ---
 
 These are my thoughts on *what art is*, and why it is so fundamental to my worldview.

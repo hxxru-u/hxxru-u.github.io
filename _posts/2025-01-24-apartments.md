@@ -1,10 +1,13 @@
 ---
 title: "Apartments"
-layout: background_game
+date: 2025-01-24
+layout: single
+game: true
 tags:
   - Creative Practice
   - Poetry
   - Translation
+excerpt: ""
 ---
 
 
