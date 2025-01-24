@@ -2,8 +2,6 @@
 main:
   - title: "about"
     url: /about/
-  - title: "posts"
-    url: /posts/
   - title: "gallery"
     url: /gallery/
   - title: "tags"

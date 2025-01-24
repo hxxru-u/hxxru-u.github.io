@@ -1,4 +1,4 @@
-# Todo list
+# General ToDos
 
 - [ ] Dropcat inegration for real. seems nontrivial
 
@@ -11,8 +11,6 @@
 - [x] change post links font in index
 
 - [ ] make code block not blinding white oh gosh
-
-- [ ] favorites page: people, resources, albums(topsters), posts, etc
 
 - [ ] cute art
 
@@ -30,5 +28,27 @@
 
 - [ ] more poetry, music, and gallery additions
 
-- [ ] fill content
+
+
+## Content ToDos
+
+### Posts to Write
+
+- [ ] favorites: people, resources, albums(topsters), posts, etc
+
+- [ ] Influences
+
+- [ ] Meta-post: talking to claude
+
+- [ ] Intuitions for what LLMs are
+
+- [ ] CV?
+
+### Tags to Make
+
+- [ ] Aesthetics
+- [ ] Music Review
+- [ ] Predictive Processing
+- [ ] Neuroscience
+- [ ] Talking to Claude
 
