@@ -5,10 +5,6 @@ layout: archive
 {% include game-advanced.html %}
 
 <div class="site-content">
-  <div class="page__content">
-    {{ content | markdownify }}
-  </div>
-
   {% if page.type == "home" %}
     {% assign entries_layout = page.entries_layout | default: 'list' %}
     <div class="entries-{{ entries_layout }}">

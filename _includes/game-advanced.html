@@ -88,6 +88,9 @@ class GameOfLife {
     this.newCells = new Set();
     
     window.addEventListener('resize', () => this.setupCanvas());
+    
+    // Start the game immediately
+    this.update();
   }
 
   setupCanvas() {
@@ -269,6 +272,5 @@ class GameOfLife {
 // Initialize and start the game when the page loads
 document.addEventListener('DOMContentLoaded', () => {
   const game = new GameOfLife();
-  game.start();
 });
 </script>
