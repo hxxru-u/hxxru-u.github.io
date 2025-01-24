@@ -70,3 +70,8 @@ code.highlighter-rouge {
   color: #5c4f4f;
   border: 1px solid #e9dcdc;
 }
+
+// Hide follow button
+.sidebar .author__urls-wrapper button {
+  display: none !important;
+}
