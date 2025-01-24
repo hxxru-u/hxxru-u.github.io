@@ -1,5 +1,19 @@
 .page__content {
   max-width: 45em;
+  padding: 0 1em;
+
+  // Center-align by default
+  margin: 0 auto;
+}
+
+// Left-align for posts with mathjax
+.mathjax-true .page__content {
+  margin: 0 0 0 2em;
+}
+
+// Add margins for background_game layout
+.layout--background_game .site-content {
+  max-width: 45em;
   margin: 0 auto;
   padding: 0 1em;
 }
