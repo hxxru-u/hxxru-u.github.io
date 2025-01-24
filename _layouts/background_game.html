@@ -5,13 +5,15 @@ layout: archive
 {% include game-advanced.html %}
 
 <div class="site-content">
+  <div class="page__content">
+    {{ content }}
+  </div>
+
   {% if page.type == "home" %}
     {% assign entries_layout = page.entries_layout | default: 'list' %}
     <div class="entries-{{ entries_layout }}">
       {% include documents-collection.html entries=site.posts type=entries_layout %}
     </div>
     {% include paginator.html %}
-  {% else %}
-    {{ content }}
   {% endif %}
 </div>
