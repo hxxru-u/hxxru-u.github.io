@@ -33,22 +33,37 @@ $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
   }
 }
 
-// Style tags
-.page__tags {
+// Style tags everywhere
+.page__tags,
+.taxonomy__index,
+.archive__item-title {
   margin: 2em 0 1em;
   font-size: 0.9em;
-  color: $text-color;
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  color: #e8a3b5;
   
   .fa-tags {
     margin-right: 0.5em;
   }
   
-  .page__tag {
-    color: $text-color;
+  a {
+    color: #e8a3b5;
     text-decoration: none;
+    font-family: "EB Garamond", Garamond, Georgia, serif;
     
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.page__tag,
+.taxonomy__count {
+  color: #e8a3b5;
+  text-decoration: none;
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  
+  &:hover {
+    text-decoration: underline;
   }
 }
