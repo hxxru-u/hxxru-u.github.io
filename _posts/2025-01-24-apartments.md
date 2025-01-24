@@ -8,9 +8,10 @@ tags:
 ---
 
 
-**SEUNG-YEOL PARK (b. 1993)**[^1]
+**SEUNG-YEOL PARK (b. 1993)**[^1][^2]
 
-[^1]: *translated from the Korean by Haru Kim*
+[^1]: Originally appearing in 『감자가 나를 보고 있었다』 (2022, 문학동네) 
+[^2]: *translated from the Korean by Haru Kim*
 
 apartments on apartments on apartments make a forest and i saw a buffalo walk amongst it all children watched the buffalo with curious eyes as it trudged lazily between the numerous apartments but the children soon left as the sky darkened and that night i listened to the footsteps of the buffalo now illuminated by street lamps the footsteps were loud yet nobody seemed bothered even as the sun started to rise nobody did as much to stick their head out the window
 
