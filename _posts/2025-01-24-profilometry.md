@@ -18,6 +18,7 @@ salamander heads in the compost snuggling like peas in a pod
 kitchen work was especially hard for Giraffe who was 14±2 feet tall. she was developing neck pains due to having to look down for 8 hours a day while Galileo sustained an injury because he intentionally dropped a MEAT MALLET on his foot (*to test my theory of falling bodies he explained* but I had a sneaking suspicion it was to get out of work early) he limped struggling to keep up while I explained the nuances of worker’s comp
 but he wasn’t really listening he was transfixed by planes passing overhead blinking bioluminescent
 I told him they were metal birds *friendly ones even give rides!*
+
 which he thought was ridiculous (*assurdo!*)
 
 
