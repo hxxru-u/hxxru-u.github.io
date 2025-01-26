@@ -100,7 +100,7 @@ One of the largest and most symmetric period 3 oscillators.
 These are patterns that translate themselves across the grid, returning to their initial state but in a different location.
 
 #### The Glider
-<div class="game-container small-game">
+<div class="game-container large-game">
   <canvas id="glider-canvas"></canvas>
   <button class="game-button" id="glider-btn"><i class="fas fa-pause"></i></button>
 </div>
