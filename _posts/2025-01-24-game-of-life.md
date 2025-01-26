@@ -134,7 +134,7 @@ A spaceship that moves horizontally, demonstrating more complex movement pattern
   border-radius: 4px;
 }
 
-.small-game canvas {
+.small-game canvas, .large-game canvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -147,6 +147,13 @@ A spaceship that moves horizontally, demonstrating more complex movement pattern
   position: absolute;
   right: 10px;
   top: 10px;
+  z-index: 1000;
+}
+
+.large-game .game-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
   z-index: 1000;
 }
 </style>
@@ -322,3 +329,5 @@ These patterns demonstrate the three fundamental types of behavior in the Game o
 What fascinates me about cellular automata like the Game of Life is how they sit at the intersection of mathematics, computer science, and art. They're deterministic systems that can generate endless variations of patterns, some predictable and some chaotic. They remind us that complexity doesn't always require complex rules - sometimes the simplest rules can create the most interesting behaviors.
 
 The Game of Life is also a reminder that local interactions can have global effects. Each cell only knows about its immediate neighbors, yet together they can create patterns that move, grow, and evolve across the entire grid. It's a beautiful illustration of emergence - how collective behavior can arise from individual actions.
+
+Want to experiment with the Game of Life yourself? Try my [interactive version](/404) on the 404 pagewhere you can create your own patterns and watch them evolve!
