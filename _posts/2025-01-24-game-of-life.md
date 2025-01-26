@@ -9,6 +9,8 @@ tags:
 excerpt: "On cellular automata."
 ---
 
+{% include game-advanced.html %}
+
 Conway's Game of Life is a perfect example of how simple rules can create complex behavior. It's a cellular automaton where each cell follows just four rules:
 
 1. Any live cell with fewer than two live neighbors dies (underpopulation)
