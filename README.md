@@ -1,5 +1,9 @@
 # General ToDos
 
+ok this is the fork
+
+i will test experimental features here
+
 - [ ] Dropcat inegration for real. seems nontrivial
 
 - [ ] color tuning
