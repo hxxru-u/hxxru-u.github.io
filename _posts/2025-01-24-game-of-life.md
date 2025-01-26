@@ -96,6 +96,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Center the initial pattern
+  const centerPattern = (pattern, rows, cols) => {
+    const startRow = Math.floor((rows - pattern.length) / 2);
+    const startCol = Math.floor((cols - pattern[0].length) / 2);
+    const grid = Array(rows).fill().map(() => Array(cols).fill(false));
+    
+    for (let i = 0; i < pattern.length; i++) {
+      for (let j = 0; j < pattern[0].length; j++) {
+        if (pattern[i][j]) {
+          grid[startRow + i][startCol + j] = true;
+        }
+      }
+    }
+    return grid;
+  };
+
+  // Override the createGrid method to center patterns
+  GameOfLife.prototype.createGrid = function() {
+    const pattern = this.config.initialPattern;
+    const grid = centerPattern(pattern, this.rows, this.cols);
+    return grid;
+  };
+
   // Blinker configuration
   const blinker = new GameOfLife({
     canvasId: 'blinker-canvas',
