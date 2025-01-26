@@ -12,6 +12,33 @@ background_game: false
 
 {% include game-advanced.html %}
 
+The Game of Life is a fascinating example of a discrete dynamical system. While most familiar dynamical systems operate in continuous space and time (like planetary motion or fluid dynamics), the Game of Life shows how rich behavior can emerge from discrete rules on a simple grid.
+
+## The Game as a Dynamical System
+
+At its core, a dynamical system is a set of states that evolve according to fixed rules. In the Game of Life:
+- The **state space** is the set of all possible grid configurations (2^n for an n-cell grid)
+- The **evolution rule** is the set of four simple rules for cell birth and death
+- The **trajectories** are the sequences of grid states over time
+
+What makes the Game of Life particularly interesting is its mix of stability and chaos:
+- Some initial conditions lead to stable configurations
+- Others lead to periodic oscillations
+- And some lead to chaotic, unpredictable patterns
+
+## Stability and Periodicity
+
+The patterns we observe in the Game of Life can be understood as different types of stable points in the dynamical system:
+
+- **Still lifes** are fixed points - configurations that map to themselves under the evolution rules
+- **Oscillators** are periodic orbits - sequences of states that repeat after a fixed number of steps
+- **Spaceships** are a special type of oscillator that combines periodic behavior with spatial translation
+
+This is analogous to how a pendulum might:
+- Come to rest (fixed point)
+- Swing back and forth forever in ideal conditions (periodic orbit)
+- Or exhibit more complex behavior when driven by external forces
+
 Conway's Game of Life is a perfect example of how simple rules can create complex behavior. It's a cellular automaton where each cell follows just four rules:
 
 1. Any live cell with fewer than two live neighbors dies (underpopulation)
@@ -183,7 +210,60 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   });
 
-  // Previous configurations (blinker, beacon, glider)...
+  // Blinker configuration
+  const blinker = new GameOfLife({
+    canvasId: 'blinker-canvas',
+    playPauseBtnId: 'blinker-btn',
+    cellSize: 20,
+    updateInterval: 300,
+    dimensions: { width: 400, height: 200 },
+    colors: {
+      cell: '#d39ca4',
+      newCell: '#f54242'
+    },
+    initialPattern: [
+      [0, 0, 0],
+      [1, 1, 1],
+      [0, 0, 0]
+    ]
+  });
+
+  // Beacon configuration
+  const beacon = new GameOfLife({
+    canvasId: 'beacon-canvas',
+    playPauseBtnId: 'beacon-btn',
+    cellSize: 20,
+    updateInterval: 300,
+    dimensions: { width: 400, height: 200 },
+    colors: {
+      cell: '#d39ca4',
+      newCell: '#f54242'
+    },
+    initialPattern: [
+      [1, 1, 0, 0],
+      [1, 1, 0, 0],
+      [0, 0, 1, 1],
+      [0, 0, 1, 1]
+    ]
+  });
+
+  // Glider configuration
+  const glider = new GameOfLife({
+    canvasId: 'glider-canvas',
+    playPauseBtnId: 'glider-btn',
+    cellSize: 20,
+    updateInterval: 300,
+    dimensions: { width: 400, height: 200 },
+    colors: {
+      cell: '#d39ca4',
+      newCell: '#f54242'
+    },
+    initialPattern: [
+      [0, 1, 0],
+      [0, 0, 1],
+      [1, 1, 1]
+    ]
+  });
 
   // Pulsar configuration
   const pulsar = new GameOfLife({
