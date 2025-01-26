@@ -1,5 +1,7 @@
 # General ToDos
 
+ok this is the fork
+
 - [ ] Dropcat inegration for real. seems nontrivial
 
 - [ ] color tuning
