@@ -52,6 +52,7 @@ A more complex oscillator that demonstrates both stable and changing cells.
   margin: 20px 0;
   border: 1px solid rgba(211, 156, 164, 0.2);
   border-radius: 4px;
+  background: #ffffff; /* Add background color for visibility */
 }
 
 .small-game canvas {
@@ -61,6 +62,7 @@ A more complex oscillator that demonstrates both stable and changing cells.
   width: 100%;
   height: 100%;
   opacity: 1;
+  border: 1px solid #ccc; /* Add border for debugging */
 }
 
 .small-game .game-button {
@@ -73,8 +75,64 @@ A more complex oscillator that demonstrates both stable and changing cells.
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Glider configuration
-  const glider = new GameOfLife({
+  // Debug function to test canvas rendering
+  function testCanvasRendering(canvasId) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+    
+    // Test draw a rectangle
+    ctx.fillStyle = '#d39ca4';
+    ctx.fillRect(0, 0, 50, 50);
+    console.log(`Canvas ${canvasId} initialized:`, {
+      width: canvas.width,
+      height: canvas.height,
+      context: !!ctx
+    });
+  }
+
+  // Modified GameOfLife class initialization
+  class GameOfLifeDemo extends GameOfLife {
+    constructor(config) {
+      super(config);
+      console.log(`GameOfLife ${config.canvasId} initialized:`, {
+        rows: this.rows,
+        cols: this.cols,
+        gridState: this.grid
+      });
+    }
+
+    drawGrid() {
+      console.log(`Drawing grid for ${this.config.canvasId}`);
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      
+      for (let i = 0; i < this.rows; i++) {
+        for (let j = 0; j < this.cols; j++) {
+          if (this.grid[i][j]) {
+            const centerX = j * this.config.cellSize + this.config.cellSize/2;
+            const centerY = i * this.config.cellSize + this.config.cellSize/2;
+            
+            // Debug: draw a simple square instead of heart for testing
+            this.ctx.fillStyle = this.newCells.has(`${i},${j}`) ? 
+              this.config.colors.newCell : 
+              this.config.colors.cell;
+            
+            this.ctx.fillRect(
+              centerX - this.config.cellSize/4,
+              centerY - this.config.cellSize/4,
+              this.config.cellSize/2,
+              this.config.cellSize/2
+            );
+          }
+        }
+      }
+    }
+  }
+
+  // Test canvas rendering first
+  ['glider-canvas', 'blinker-canvas', 'beacon-canvas'].forEach(testCanvasRendering);
+
+  // Create game instances with debug logging
+  const glider = new GameOfLifeDemo({
     canvasId: 'glider-canvas',
     playPauseBtnId: 'glider-btn',
     cellSize: 20,
@@ -88,12 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
       [0, 1, 0],
       [0, 0, 1],
       [1, 1, 1]
-    ],
-    patternPlacement: {
-      spacing: 1,
-      probability: 1,
-      randomOffset: 0
-    }
+    ]
   });
 
   // Center the initial pattern
@@ -120,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Blinker configuration
-  const blinker = new GameOfLife({
+  const blinker = new GameOfLifeDemo({
     canvasId: 'blinker-canvas',
     playPauseBtnId: 'blinker-btn',
     cellSize: 20,
@@ -134,16 +187,11 @@ document.addEventListener('DOMContentLoaded', () => {
       [0, 0, 0],
       [1, 1, 1],
       [0, 0, 0]
-    ],
-    patternPlacement: {
-      spacing: 1,
-      probability: 1,
-      randomOffset: 0
-    }
+    ]
   });
 
   // Beacon configuration
-  const beacon = new GameOfLife({
+  const beacon = new GameOfLifeDemo({
     canvasId: 'beacon-canvas',
     playPauseBtnId: 'beacon-btn',
     cellSize: 20,
@@ -158,12 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
       [1, 1, 0, 0],
       [0, 0, 1, 1],
       [0, 0, 1, 1]
-    ],
-    patternPlacement: {
-      spacing: 1,
-      probability: 1,
-      randomOffset: 0
-    }
+    ]
   });
 });
 </script>
