@@ -330,4 +330,4 @@ What fascinates me about cellular automata like the Game of Life is how they sit
 
 The Game of Life is also a reminder that local interactions can have global effects. Each cell only knows about its immediate neighbors, yet together they can create patterns that move, grow, and evolve across the entire grid. It's a beautiful illustration of emergence - how collective behavior can arise from individual actions.
 
-Want to experiment with the Game of Life yourself? Try my [interactive version](/404) on the 404 pagewhere you can create your own patterns and watch them evolve!
+Want to experiment with the Game of Life yourself? Try my [interactive version](/404) on the 404 page where you can create your own patterns and watch them evolve!
