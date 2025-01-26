@@ -251,9 +251,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const glider = new GameOfLife({
     canvasId: 'glider-canvas',
     playPauseBtnId: 'glider-btn',
-    cellSize: 20,
+    cellSize: 30,
     updateInterval: 300,
-    dimensions: { width: 400, height: 200 },
+    dimensions: { width: 600, height: 600 },
     colors: {
       cell: '#d39ca4',
       newCell: '#f54242'
