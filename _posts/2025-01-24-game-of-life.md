@@ -16,13 +16,136 @@ Conway's Game of Life is a perfect example of how simple rules can create comple
 3. Any live cell with more than three live neighbors dies (overpopulation)
 4. Any dead cell with exactly three live neighbors becomes a live cell (reproduction)
 
-These rules create fascinating patterns and behaviors. Some configurations stabilize, some oscillate, and some move across the grid like spaceships. The game is a metaphor for the emergence of complex systems from simple rules - a theme that appears throughout nature, from crystal formation to biological patterns.
+## Common Patterns
 
-I've implemented the Game of Life as the background of this website, with a few artistic choices:
-- Cells are represented as 8-bit hearts
-- New cells appear in bright red before fading to a muted rose pink
-- The grid wraps around at the edges, creating a toroidal universe
-- You can pause/play the simulation or click to toggle cells
+Let's look at some classic patterns that emerge from these simple rules:
+
+### The Glider
+<div class="game-container small-game">
+  <canvas id="glider-canvas"></canvas>
+  <button class="game-button" id="glider-btn"><i class="fas fa-pause"></i></button>
+</div>
+
+This simple pattern moves diagonally across the grid, demonstrating how local rules can create movement.
+
+### The Blinker
+<div class="game-container small-game">
+  <canvas id="blinker-canvas"></canvas>
+  <button class="game-button" id="blinker-btn"><i class="fas fa-pause"></i></button>
+</div>
+
+The simplest oscillator, alternating between two states.
+
+### The Beacon
+<div class="game-container small-game">
+  <canvas id="beacon-canvas"></canvas>
+  <button class="game-button" id="beacon-btn"><i class="fas fa-pause"></i></button>
+</div>
+
+A more complex oscillator that demonstrates both stable and changing cells.
+
+<style>
+.small-game {
+  height: 200px;
+  width: 200px;
+  position: relative;
+  margin: 20px 0;
+  border: 1px solid rgba(211, 156, 164, 0.2);
+  border-radius: 4px;
+}
+
+.small-game canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+.small-game .game-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1000;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Glider configuration
+  const glider = new GameOfLife({
+    canvasId: 'glider-canvas',
+    playPauseBtnId: 'glider-btn',
+    cellSize: 20,
+    updateInterval: 300,
+    dimensions: { width: 200, height: 200 },
+    colors: {
+      cell: '#d39ca4',
+      newCell: '#f54242'
+    },
+    initialPattern: [
+      [0, 1, 0],
+      [0, 0, 1],
+      [1, 1, 1]
+    ],
+    patternPlacement: {
+      spacing: 1,
+      probability: 1,
+      randomOffset: 0
+    }
+  });
+
+  // Blinker configuration
+  const blinker = new GameOfLife({
+    canvasId: 'blinker-canvas',
+    playPauseBtnId: 'blinker-btn',
+    cellSize: 20,
+    updateInterval: 300,
+    dimensions: { width: 200, height: 200 },
+    colors: {
+      cell: '#d39ca4',
+      newCell: '#f54242'
+    },
+    initialPattern: [
+      [0, 0, 0],
+      [1, 1, 1],
+      [0, 0, 0]
+    ],
+    patternPlacement: {
+      spacing: 1,
+      probability: 1,
+      randomOffset: 0
+    }
+  });
+
+  // Beacon configuration
+  const beacon = new GameOfLife({
+    canvasId: 'beacon-canvas',
+    playPauseBtnId: 'beacon-btn',
+    cellSize: 20,
+    updateInterval: 300,
+    dimensions: { width: 200, height: 200 },
+    colors: {
+      cell: '#d39ca4',
+      newCell: '#f54242'
+    },
+    initialPattern: [
+      [1, 1, 0, 0],
+      [1, 1, 0, 0],
+      [0, 0, 1, 1],
+      [0, 0, 1, 1]
+    ],
+    patternPlacement: {
+      spacing: 1,
+      probability: 1,
+      randomOffset: 0
+    }
+  });
+});
+</script>
+
+These patterns demonstrate how the Game of Life can create various behaviors from simple rules. The glider shows movement, while the blinker and beacon show different types of oscillation.
 
 What fascinates me about cellular automata like the Game of Life is how they sit at the intersection of mathematics, computer science, and art. They're deterministic systems that can generate endless variations of patterns, some predictable and some chaotic. They remind us that complexity doesn't always require complex rules - sometimes the simplest rules can create the most interesting behaviors.
 
