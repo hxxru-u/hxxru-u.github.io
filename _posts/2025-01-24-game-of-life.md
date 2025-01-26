@@ -19,38 +19,88 @@ Conway's Game of Life is a perfect example of how simple rules can create comple
 3. Any live cell with more than three live neighbors dies (overpopulation)
 4. Any dead cell with exactly three live neighbors becomes a live cell (reproduction)
 
-## Common Patterns
+## Pattern Types
 
-Let's look at some classic patterns that emerge from these simple rules:
+In the Game of Life, patterns can be classified into several categories based on their behavior:
 
-### The Glider
+### Still Lifes
+These are patterns that don't change from one generation to the next. They are stable configurations.
+
+#### The Block
 <div class="game-container small-game">
-  <canvas id="glider-canvas"></canvas>
-  <button class="game-button" id="glider-btn"><i class="fas fa-pause"></i></button>
+  <canvas id="block-canvas"></canvas>
+  <button class="game-button" id="block-btn"><i class="fas fa-pause"></i></button>
 </div>
 
-This simple pattern moves diagonally across the grid, demonstrating how local rules can create movement.
+The simplest still life - a 2x2 square that remains unchanged.
 
-### The Blinker
+#### The Beehive
+<div class="game-container small-game">
+  <canvas id="beehive-canvas"></canvas>
+  <button class="game-button" id="beehive-btn"><i class="fas fa-pause"></i></button>
+</div>
+
+A hexagonal arrangement that demonstrates how cells can form stable structures.
+
+### Oscillators
+These patterns return to their initial state after a fixed number of generations. The number of steps before repetition is called the "period".
+
+#### The Blinker
 <div class="game-container small-game">
   <canvas id="blinker-canvas"></canvas>
   <button class="game-button" id="blinker-btn"><i class="fas fa-pause"></i></button>
 </div>
 
-The simplest oscillator, alternating between two states.
+The simplest oscillator with period 2, alternating between horizontal and vertical lines.
 
-### The Beacon
+#### The Beacon
 <div class="game-container small-game">
   <canvas id="beacon-canvas"></canvas>
   <button class="game-button" id="beacon-btn"><i class="fas fa-pause"></i></button>
 </div>
 
-A more complex oscillator that demonstrates both stable and changing cells.
+A period 2 oscillator where two blocks appear to flash.
+
+#### The Pulsar
+<div class="game-container large-game">
+  <canvas id="pulsar-canvas"></canvas>
+  <button class="game-button" id="pulsar-btn"><i class="fas fa-pause"></i></button>
+</div>
+
+One of the largest and most symmetric period 3 oscillators.
+
+### Spaceships
+These are patterns that translate themselves across the grid, returning to their initial state but in a different location.
+
+#### The Glider
+<div class="game-container small-game">
+  <canvas id="glider-canvas"></canvas>
+  <button class="game-button" id="glider-btn"><i class="fas fa-pause"></i></button>
+</div>
+
+The smallest and most common spaceship, moving diagonally across the grid.
+
+#### The Lightweight Spaceship (LWSS)
+<div class="game-container small-game">
+  <canvas id="lwss-canvas"></canvas>
+  <button class="game-button" id="lwss-btn"><i class="fas fa-pause"></i></button>
+</div>
+
+A spaceship that moves horizontally, demonstrating more complex movement patterns.
 
 <style>
 .small-game {
   height: 200px;
-  width: 200px;
+  width: 400px;
+  position: relative;
+  margin: 20px 0;
+  border: 1px solid rgba(211, 156, 164, 0.2);
+  border-radius: 4px;
+}
+
+.large-game {
+  height: 600px;
+  width: 600px;
   position: relative;
   margin: 20px 0;
   border: 1px solid rgba(211, 156, 164, 0.2);
@@ -92,71 +142,102 @@ document.addEventListener('DOMContentLoaded', () => {
     return grid;
   };
 
-  // Override the createGrid method to center patterns
   GameOfLife.prototype.createGrid = function() {
     const pattern = this.config.initialPattern;
     const grid = centerPattern(pattern, this.rows, this.cols);
     return grid;
   };
 
-  // Glider configuration
-  const glider = new GameOfLife({
-    canvasId: 'glider-canvas',
-    playPauseBtnId: 'glider-btn',
+  // Block configuration
+  const block = new GameOfLife({
+    canvasId: 'block-canvas',
+    playPauseBtnId: 'block-btn',
     cellSize: 20,
     updateInterval: 300,
-    dimensions: { width: 200, height: 200 },
+    dimensions: { width: 400, height: 200 },
     colors: {
       cell: '#d39ca4',
       newCell: '#f54242'
     },
     initialPattern: [
-      [0, 1, 0],
-      [0, 0, 1],
-      [1, 1, 1]
+      [1, 1],
+      [1, 1]
     ]
   });
 
-  // Blinker configuration
-  const blinker = new GameOfLife({
-    canvasId: 'blinker-canvas',
-    playPauseBtnId: 'blinker-btn',
+  // Beehive configuration
+  const beehive = new GameOfLife({
+    canvasId: 'beehive-canvas',
+    playPauseBtnId: 'beehive-btn',
     cellSize: 20,
     updateInterval: 300,
-    dimensions: { width: 200, height: 200 },
+    dimensions: { width: 400, height: 200 },
     colors: {
       cell: '#d39ca4',
       newCell: '#f54242'
     },
     initialPattern: [
-      [0, 0, 0],
-      [1, 1, 1],
-      [0, 0, 0]
+      [0, 1, 1, 0],
+      [1, 0, 0, 1],
+      [0, 1, 1, 0]
     ]
   });
 
-  // Beacon configuration
-  const beacon = new GameOfLife({
-    canvasId: 'beacon-canvas',
-    playPauseBtnId: 'beacon-btn',
-    cellSize: 20,
+  // Previous configurations (blinker, beacon, glider)...
+
+  // Pulsar configuration
+  const pulsar = new GameOfLife({
+    canvasId: 'pulsar-canvas',
+    playPauseBtnId: 'pulsar-btn',
+    cellSize: 30,
     updateInterval: 300,
-    dimensions: { width: 200, height: 200 },
+    dimensions: { width: 600, height: 600 },
     colors: {
       cell: '#d39ca4',
       newCell: '#f54242'
     },
     initialPattern: [
-      [1, 1, 0, 0],
-      [1, 1, 0, 0],
-      [0, 0, 1, 1],
-      [0, 0, 1, 1]
+      [0,0,1,1,1,0,0,0,1,1,1,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0,0,0],
+      [1,0,0,0,0,1,0,1,0,0,0,0,1],
+      [1,0,0,0,0,1,0,1,0,0,0,0,1],
+      [1,0,0,0,0,1,0,1,0,0,0,0,1],
+      [0,0,1,1,1,0,0,0,1,1,1,0,0],
+      [0,0,0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,1,1,1,0,0,0,1,1,1,0,0],
+      [1,0,0,0,0,1,0,1,0,0,0,0,1],
+      [1,0,0,0,0,1,0,1,0,0,0,0,1],
+      [1,0,0,0,0,1,0,1,0,0,0,0,1],
+      [0,0,0,0,0,0,0,0,0,0,0,0,0],
+      [0,0,1,1,1,0,0,0,1,1,1,0,0]
+    ]
+  });
+
+  // LWSS configuration
+  const lwss = new GameOfLife({
+    canvasId: 'lwss-canvas',
+    playPauseBtnId: 'lwss-btn',
+    cellSize: 20,
+    updateInterval: 300,
+    dimensions: { width: 400, height: 200 },
+    colors: {
+      cell: '#d39ca4',
+      newCell: '#f54242'
+    },
+    initialPattern: [
+      [0, 1, 1, 1, 1],
+      [1, 0, 0, 0, 1],
+      [0, 0, 0, 0, 1],
+      [1, 0, 0, 1, 0]
     ]
   });
 });
 </script>
 
-These patterns demonstrate how the Game of Life can create various behaviors from simple rules. The glider shows movement, while the blinker and beacon show different types of oscillation.
+These patterns demonstrate the three fundamental types of behavior in the Game of Life:
+- **Still Lifes** are static patterns that don't change
+- **Oscillators** are patterns that repeat in a fixed cycle
+- **Spaceships** are patterns that move across the grid while maintaining their shape
 
 What fascinates me about cellular automata like the Game of Life is how they sit at the intersection of mathematics, computer science, and art. They're deterministic systems that can generate endless variations of patterns, some predictable and some chaotic. They remind us that complexity doesn't always require complex rules - sometimes the simplest rules can create the most interesting behaviors.
 
