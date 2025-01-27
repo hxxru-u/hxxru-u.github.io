@@ -6,7 +6,7 @@ tags:
   - Creative Practice
   - Poetry
   - Original Work
-excerpt: "surfaces"
+excerpt: ""
 ---
 
 

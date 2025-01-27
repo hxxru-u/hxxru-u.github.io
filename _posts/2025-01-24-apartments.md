@@ -6,7 +6,7 @@ tags:
   - Creative Practice
   - Poetry
   - Translation
-excerpt: "it is what it is"
+excerpt: ""
 ---
 
 
