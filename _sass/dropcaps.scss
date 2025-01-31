@@ -1,0 +1,47 @@
+/* _sass/_dropcaps.scss */
+
+/* Define SVG dropcaps for available letters */
+@each $letter in (a, b, c, f, g, i, q, t, v) {
+    @font-face {
+        font-family: 'DropcapSVG';
+        src: url('/assets/fonts/dropcaps/svg-dropcaps/#{$letter}.svg') format('svg');
+        unicode-range: U+#{str-slice('0041', -2)}, U+#{str-slice('0061', -2)}; /* Include both uppercase and lowercase */
+    }
+}
+
+/* Define TTF for complete alphabet */
+@each $letter in (A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z) {
+    @font-face {
+        font-family: 'DropcapTTF';
+        src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-#{$letter}.ttf') format('truetype');
+        unicode-range: U+#{str-slice('0041', -2)};  /* A starts at U+0041 */
+    }
+}
+
+.dropcap {
+    float: left;
+    font-size: 3.5em;
+    line-height: 0.8;
+    padding-top: 0.1em;
+    padding-right: 0.1em;
+    margin-bottom: -0.1em;
+    /* Try SVG first, fall back to TTF */
+    font-family: 'DropcapSVG', 'DropcapTTF';
+    /* Since your site is dark mode by default, dropcaps should be light */
+    color: #ffffff; /* or whatever color matches your site's text color */
+}
+
+/* Browser-specific adjustments */
+@-moz-document url-prefix() {
+    .dropcap {
+        padding-top: 0.12em;
+        margin-bottom: -0.12em;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .dropcap {
+        padding-top: 0.08em;
+        margin-bottom: -0.08em;
+    }
+}
