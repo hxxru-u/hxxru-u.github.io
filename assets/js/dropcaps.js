@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (availableLetters.includes(letter)) {
         // Set styles first
         dropcap.style.display = 'inline-block';
-        dropcap.style.width = '3.5em';
-        dropcap.style.height = '3.5em';
+        dropcap.style.width = '2.8em';  // Match new font size
+        dropcap.style.height = '2.8em';
         dropcap.style.verticalAlign = 'middle';
-        dropcap.style.marginRight = '0.1em';
+        dropcap.style.marginRight = '0.2em';
         dropcap.style.marginBottom = '-0.1em';
 
         // Fetch and process the SVG
@@ -29,14 +29,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     const cssRules = {};
                     if (styleTag) {
                         const cssText = styleTag.textContent;
-                        // Parse CSS rules like .B{fill:#0f0f0f}
-                        cssText.match(/\.[A-Z]{1,2}\{fill:#[0-9a-f]{6}\}/g)?.forEach(rule => {
-                            const className = rule.match(/\.[A-Z]{1,2}/)[0].substring(1);
-                            const fillColor = rule.match(/#[0-9a-f]{6}/)[0];
-                            cssRules[className] = fillColor;
-                        });
-                        // Remove the style tag since we'll inline the styles
-                        styleTag.remove();
+                        // Parse all CSS rules including rgb, rgba, and hex colors
+                        const ruleRegex = /\.([A-Z]{1,2})\{([^}]+)\}/g;
+                        let match;
+                        while ((match = ruleRegex.exec(cssText)) !== null) {
+                            const className = match[1];
+                            const styles = match[2].split(';').reduce((acc, style) => {
+                                const [prop, value] = style.split(':').map(s => s.trim());
+                                if (prop && value) acc[prop] = value;
+                                return acc;
+                            }, {});
+                            cssRules[className] = styles;
+                        }
+                        // Keep the style tag to preserve complex styles
                     }
 
                     // Set SVG attributes for proper sizing
@@ -44,17 +49,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     svg.setAttribute('height', '100%');
                     svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
                     
-                    // Process all paths and inline their styles
-                    const paths = svg.querySelectorAll('path');
-                    paths.forEach(path => {
-                        const classAttr = path.getAttribute('class');
+                    // Process all elements that might have styles
+                    const elements = svg.querySelectorAll('*');
+                    elements.forEach(el => {
+                        const classAttr = el.getAttribute('class');
                         if (classAttr && cssRules[classAttr]) {
-                            // Inline the fill color from CSS
-                            path.setAttribute('fill', cssRules[classAttr]);
-                            path.removeAttribute('class');
-                        } else if (!path.getAttribute('fill')) {
-                            // Use theme color for paths without specific fill
-                            path.setAttribute('fill', 'currentColor');
+                            // Apply all styles from CSS rules
+                            const styles = cssRules[classAttr];
+                            Object.entries(styles).forEach(([prop, value]) => {
+                                el.style[prop] = value;
+                            });
+                            // Keep the class as some styles might be complex
+                        }
+                        
+                        // Preserve existing fill and opacity attributes
+                        const fill = el.getAttribute('fill');
+                        const opacity = el.getAttribute('opacity');
+                        const style = el.getAttribute('style');
+                        
+                        if (!fill && !style?.includes('fill:')) {
+                            el.style.fill = 'currentColor';
                         }
                     });
                     
