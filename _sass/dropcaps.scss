@@ -3,15 +3,15 @@
 /* Base dropcap styles */
 .dropcap {
     float: left;
-    /* Calculate size to span 5 lines:
-       - Theme likely uses a larger line-height
-       - Increase size to compensate
+    /* Set size relative to paragraph line height:
+       - Typical paragraph line-height is 1.6-1.8
+       - Need to span 5 lines, so multiply by ~5
     */
-    font-size: 7em;  /* Increased for TTF */
-    line-height: 0.85;
-    padding-top: 0.05em;
-    padding-right: 0.2em;
-    margin-bottom: -0.05em;
+    font-size: 8.5em;  /* ~1.7 * 5 */
+    line-height: 0.95;  /* Tighter line height for better vertical fit */
+    padding-top: 0.02em;
+    padding-right: 0.15em;
+    margin-bottom: -0.02em;
     font-family: 'DropcapTTF' !important;  /* Force TTF font */
     color: $text-color;
     background-color: $background-color;
@@ -25,9 +25,9 @@
     padding: 0;
     background: none;
     mix-blend-mode: normal;
-    width: 4.2em;  /* Increased for SVG */
-    height: 4.2em;
-    margin-right: 0.2em;
+    width: 8.5em;  /* Match TTF size */
+    height: 8.5em;
+    margin-right: 0.15em;
     margin-bottom: 0;
     line-height: 1;
     
@@ -50,14 +50,14 @@
 /* Browser-specific adjustments for TTF */
 @-moz-document url-prefix() {
     .dropcap:not(.dropcap-svg) {
-        padding-top: 0.08em;
-        margin-bottom: -0.08em;
+        padding-top: 0.04em;
+        margin-bottom: -0.04em;
     }
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     .dropcap:not(.dropcap-svg) {
-        padding-top: 0.05em;
-        margin-bottom: -0.05em;
+        padding-top: 0.02em;
+        margin-bottom: -0.02em;
     }
 }

@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (availableLetters.includes(letter)) {
         // Set styles first
         dropcap.style.display = 'inline-block';
-        dropcap.style.width = '4.2em';  // Match new SVG size
-        dropcap.style.height = '4.2em';
+        dropcap.style.width = '8.5em';  // Match SCSS size
+        dropcap.style.height = '8.5em';
         dropcap.style.verticalAlign = 'middle';
-        dropcap.style.marginRight = '0.2em';
-        dropcap.style.marginBottom = '-0.1em';
+        dropcap.style.marginRight = '0.15em';
+        dropcap.style.marginBottom = '-0.02em';
 
         // Fetch and process the SVG
         fetch(`/assets/fonts/dropcaps/svg-dropcaps/${letter}.svg`)
