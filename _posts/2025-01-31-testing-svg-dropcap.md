@@ -1,8 +1,12 @@
 ---
-layout: post
 title: "Testing SVG Dropcap"
-date: 2025-01-31
-categories: test
+layout: background_game
+categories:
+  - blog
+tags:
+  - Typography
+  - Test
+excerpt: "Testing SVG dropcap implementation."
 dropcap: true
 ---
 

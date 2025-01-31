@@ -1,0 +1,27 @@
+{% if page.dropcap %}
+  {% assign paragraphs = content | split: '</p>' %}
+  {% assign first_paragraph = paragraphs | first %}
+  {% if first_paragraph contains '<p>' %}
+    {% assign first_paragraph = first_paragraph | split: '<p>' | last %}
+  {% endif %}
+  {% assign first_char = first_paragraph | strip_html | truncate: 1, "" %}
+  {% assign remaining_first_para = first_paragraph | strip_html | slice: 1, first_paragraph.size %}
+  
+  {% if page.background_game %}
+    {% assign remaining_paras = paragraphs | shift %}
+    <p><span class="dropcap">{{ first_char }}</span>{{ remaining_first_para }}</p>
+    {% for para in remaining_paras %}
+      {% if para contains '<p>' %}
+        {{ para }}</p>
+      {% else %}
+        <p>{{ para }}</p>
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <p><span class="dropcap">{{ first_char }}</span>{{ remaining_first_para }}</p>
+    {% assign remaining_content = content | split: '</p>' | shift | join: '</p>' %}
+    {{ remaining_content }}
+  {% endif %}
+{% else %}
+  {{ content }}
+{% endif %}

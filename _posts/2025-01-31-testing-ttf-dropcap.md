@@ -1,8 +1,11 @@
 ---
-layout: post
 title: "Testing TTF Dropcap"
-date: 2025-01-31
-categories: test
+categories:
+  - blog
+tags:
+  - Typography
+  - Test
+excerpt: "Testing TTF dropcap implementation."
 dropcap: true
 ---
 

@@ -6,7 +6,11 @@ layout: archive
 
 <div class="site-content">
   <div class="page__content">
-    {{ content | markdownify }}
+    {% if page.dropcap %}
+      {% include dropcap.html %}
+    {% else %}
+      {{ content | markdownify }}
+    {% endif %}
   </div>
 
   {% if page.type != "home" %}
