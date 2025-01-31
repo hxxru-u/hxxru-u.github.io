@@ -8,8 +8,8 @@
     padding-right: 0.1em;
     margin-bottom: -0.1em;
     font-family: 'DropcapSVG', 'DropcapTTF', serif;
-    color: #ffffff;  /* Keep white text */
-    background-color: #252a34;  /* Match site background */
+    color: $text-color;  /* Use theme text color */
+    background-color: $background-color;  /* Use theme background color */
     font-weight: normal;
     font-style: normal;
 }

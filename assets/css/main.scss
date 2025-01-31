@@ -9,9 +9,12 @@
 
 /* Import custom skin variables first */
 @import "custom-skin";
-@import "custom-post";
-@import "custom-fonts";  /* Add Korean font support */
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
-@import "fonts"; // dropcap fonts
+
+/* Custom styles */
+@import "custom-post";
+@import "custom-fonts";  /* Add Korean font support */
+@import "fonts";  /* dropcap font definitions */
+@import "dropcaps";  /* dropcap styles */
