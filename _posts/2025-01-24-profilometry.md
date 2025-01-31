@@ -3,10 +3,9 @@ title: "Profilometry"
 date: 2025-01-24
 layout: background_game
 tags:
-  - Creative Practice
   - Poetry
   - Original Work
-excerpt: ""
+excerpt: "."
 ---
 
 
