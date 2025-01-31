@@ -4,10 +4,9 @@
 .dropcap {
     float: left;
     /* Set size relative to paragraph line height:
-       - Typical paragraph line-height is 1.6-1.8
-       - Need to span 5 lines, so multiply by ~5
+       - Reducing from 8.5em to 7.5em to span exactly 5 lines
     */
-    font-size: 8.5em;  /* ~1.7 * 5 */
+    font-size: 7.5em;
     line-height: 0.95;  /* Tighter line height for better vertical fit */
     padding-top: 0.02em;
     padding-right: 0.15em;
@@ -25,8 +24,8 @@
     padding: 0;
     background: none;
     mix-blend-mode: normal;
-    width: 8.5em;  /* Match TTF size */
-    height: 8.5em;
+    width: 7.5em;  /* Match TTF size */
+    height: 7.5em;
     margin-right: 0.15em;
     margin-bottom: 0;
     line-height: 1;

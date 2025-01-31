@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (availableLetters.includes(letter)) {
         // Set styles first
         dropcap.style.display = 'inline-block';
-        dropcap.style.width = '8.5em';  // Match SCSS size
-        dropcap.style.height = '8.5em';
+        dropcap.style.width = '7.5em';  // Match SCSS size
+        dropcap.style.height = '7.5em';
         dropcap.style.verticalAlign = 'middle';
         dropcap.style.marginRight = '0.15em';
         dropcap.style.marginBottom = '-0.02em';

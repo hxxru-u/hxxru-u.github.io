@@ -6,6 +6,7 @@ tags:
   - Poetry
   - Original Work
 excerpt: "."
+dropcap: true
 ---
 
 
