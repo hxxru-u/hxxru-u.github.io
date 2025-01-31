@@ -6,25 +6,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const availableLetters = ['a', 'b', 'c', 'f', 'g', 'i', 'q', 't', 'v'];
     
     if (availableLetters.includes(letter)) {
-        fetch(`/assets/fonts/dropcaps/svg-dropcaps/${letter}.svg`)
-            .then(response => response.text())
-            .then(svgContent => {
-                // Extract the SVG content from the font file
-                const parser = new DOMParser();
-                const svgDoc = parser.parseFromString(svgContent, 'image/svg+xml');
-                const glyph = svgDoc.querySelector('glyph');
-                if (glyph) {
-                    const pathData = glyph.getAttribute('d');
-                    const svgString = `<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-                        <path d="${pathData}" fill="currentColor"/>
-                    </svg>`;
-                    dropcap.innerHTML = svgString;
-                    dropcap.classList.add('dropcap-svg');
-                }
-            })
-            .catch(error => {
-                console.log('Error loading SVG:', error);
-                // Keep the text fallback if SVG fails to load
-            });
+        // Set styles first
+        dropcap.style.display = 'inline-block';
+        dropcap.style.width = '3.5em';  // Match the font-size we were using before
+        dropcap.style.height = '3.5em';
+        dropcap.style.verticalAlign = 'middle';
+        dropcap.style.marginRight = '0.1em';
+        dropcap.style.marginBottom = '-0.1em';
+
+        // Create SVG with proper viewBox and styling
+        const svgString = `<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <use href="/assets/fonts/dropcaps/svg-dropcaps/${letter}.svg#dropcap" />
+        </svg>`;
+        
+        dropcap.innerHTML = svgString;
+        dropcap.classList.add('dropcap-svg');
     }
 });

@@ -1,5 +1,6 @@
 /* _sass/dropcaps.scss */
 
+/* Base dropcap styles */
 .dropcap {
     float: left;
     font-size: 3.5em;
@@ -12,27 +13,25 @@
     background-color: $background-color;
     font-weight: normal;
     font-style: normal;
+}
+
+/* SVG-specific styles */
+.dropcap.dropcap-svg {
+    padding: 0;
+    background: none;  /* Remove background for SVG */
     
-    /* SVG styles */
-    &.dropcap-svg {
-        width: 1.2em;
-        height: 1.2em;
-        padding: 0;
-        margin: 0 0.1em -0.1em 0;
+    svg {
+        width: 100%;
+        height: 100%;
+        display: block;
         
-        svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-        
-        path {
-            fill: currentColor;
+        path, use {
+            fill: currentColor;  /* Use the text color for SVG fill */
         }
     }
 }
 
-/* Browser-specific adjustments for text dropcaps */
+/* Browser-specific adjustments for TTF */
 @-moz-document url-prefix() {
     .dropcap:not(.dropcap-svg) {
         padding-top: 0.12em;
