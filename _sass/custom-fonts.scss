@@ -1,9 +1,8 @@
 /* Set Korean font for Korean text only */
 :lang(ko) {
-  font-family: 'Noto Serif KR', serif !important;
+  font-family: "Noto Serif KR", $serif;
   font-weight: 200;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-display: block;
 }
 
 /* Ensure proper rendering for mixed-language content */
