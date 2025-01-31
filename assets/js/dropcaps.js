@@ -14,12 +14,35 @@ document.addEventListener('DOMContentLoaded', function() {
         dropcap.style.marginRight = '0.1em';
         dropcap.style.marginBottom = '-0.1em';
 
-        // Create SVG with proper viewBox and styling
-        const svgString = `<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <use href="/assets/fonts/dropcaps/svg-dropcaps/${letter}.svg#dropcap" />
-        </svg>`;
-        
-        dropcap.innerHTML = svgString;
-        dropcap.classList.add('dropcap-svg');
+        // Fetch and insert the SVG content directly
+        fetch(`/assets/fonts/dropcaps/svg-dropcaps/${letter}.svg`)
+            .then(response => response.text())
+            .then(svgContent => {
+                // Create a temporary div to parse the SVG
+                const div = document.createElement('div');
+                div.innerHTML = svgContent;
+                const svg = div.querySelector('svg');
+                
+                if (svg) {
+                    // Ensure SVG has proper attributes
+                    svg.setAttribute('width', '100%');
+                    svg.setAttribute('height', '100%');
+                    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+                    
+                    // Force the fill color through inline style
+                    const elements = svg.querySelectorAll('path, use, symbol, g');
+                    elements.forEach(el => {
+                        el.style.fill = 'currentColor';
+                        el.style.color = 'currentColor';
+                    });
+                    
+                    dropcap.innerHTML = svg.outerHTML;
+                    dropcap.classList.add('dropcap-svg');
+                }
+            })
+            .catch(error => {
+                console.log('Error loading SVG:', error);
+                // Keep the text fallback if SVG fails to load
+            });
     }
 });

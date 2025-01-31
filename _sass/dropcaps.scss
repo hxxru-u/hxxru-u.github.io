@@ -24,10 +24,19 @@
         width: 100%;
         height: 100%;
         display: block;
-        
-        path, use {
-            fill: currentColor;  /* Use the text color for SVG fill */
-        }
+    }
+    
+    /* Force SVG colors regardless of other styles */
+    svg, path, use, symbol {
+        fill: $text-color !important;  /* Use theme text color */
+        stroke: none !important;
+        color: $text-color !important;
+    }
+    
+    /* Override any AI-added classes */
+    [class*="ai-style-change"] {
+        fill: $text-color !important;
+        color: $text-color !important;
     }
 }
 
