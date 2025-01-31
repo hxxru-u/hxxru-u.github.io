@@ -1,4 +1,5 @@
 <!-- Add this to your default layout or the specific layout you're using -->
+{% if page.background_game != false %}
 <div class="game-controls">
   <button id="play-pause-btn" class="game-button">
     <i class="fas fa-pause"></i>
@@ -69,27 +70,37 @@
   opacity: 0.15;
 }
 </style>
+{% endif %}
 
 <script>
 class GameOfLife {
-  constructor() {
-    this.canvas = document.getElementById('life-canvas');
-    this.ctx = this.canvas.getContext('2d');
-    this.cellSize = 20;
-    this.setupCanvas();
-    
-    this.colors = {
-      background: 'transparent',
-      cell: '#d39ca4',
-      newCell: '#f54242'
+  constructor(config = {}) {
+    // Default configuration
+    this.config = {
+      canvasId: 'life-canvas',
+      playPauseBtnId: 'play-pause-btn',
+      cellSize: 20,
+      updateInterval: 200,
+      colors: {
+        background: 'transparent',
+        cell: '#d39ca4',
+        newCell: '#f54242'
+      },
+      initialPattern: null,  // Will use default if not provided
+      cellRenderer: this.drawPixelHeart.bind(this), // Default renderer
+      ...config  // Override defaults with provided config
     };
+
+    // Initialize
+    this.canvas = document.getElementById(this.config.canvasId);
+    this.ctx = this.canvas.getContext('2d');
+    this.playPauseBtn = document.getElementById(this.config.playPauseBtnId);
     
-    // Initialize play state
+    // Game state
     this.running = true;
-    this.playPauseBtn = document.getElementById('play-pause-btn');
-    this.playPauseBtn.addEventListener('click', () => this.togglePlayPause());
+    this.newCells = new Set();
     
-    // 8-bit heart pattern
+    // Keep original heart pattern
     this.heartPattern = [
       [0,1,1,0,0,0,1,1,0],
       [1,1,1,1,0,1,1,1,1],
@@ -100,26 +111,28 @@ class GameOfLife {
       [0,0,0,1,1,1,0,0,0],
       [0,0,0,0,1,0,0,0,0]
     ];
-    
-    // Track new cells
-    this.newCells = new Set();
-    
-    window.addEventListener('resize', () => this.setupCanvas());
-    
-    // Start the game immediately
+
+    this.setupCanvas();
+    this.setupEventListeners();
     this.update();
   }
 
   setupCanvas() {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
-    this.cols = Math.ceil(this.canvas.width / this.cellSize);
-    this.rows = Math.ceil(this.canvas.height / this.cellSize);
+    const { width, height } = this.config.dimensions || {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+    
+    this.canvas.width = width;
+    this.canvas.height = height;
+    this.cols = Math.ceil(this.canvas.width / this.config.cellSize);
+    this.rows = Math.ceil(this.canvas.height / this.config.cellSize);
     this.grid = this.createGrid();
   }
 
   createGrid() {
-    const basePattern = [
+    // Use provided pattern or fall back to default
+    const pattern = this.config.initialPattern || [
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
       [0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0],
@@ -139,43 +152,53 @@ class GameOfLife {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ];
 
-    const patternHeight = basePattern.length;
-    const patternWidth = basePattern[0].length;
-    
-    // Create empty grid
+    return this.initializeGridWithPattern(pattern);
+  }
+
+  initializeGridWithPattern(pattern) {
     const grid = Array(this.rows).fill().map(() => Array(this.cols).fill(false));
+    const patternHeight = pattern.length;
+    const patternWidth = pattern[0].length;
     
-    // Calculate how many patterns we can fit horizontally and vertically
-    const horizontalPatterns = Math.ceil(this.cols / (patternWidth * 1.5));
-    const verticalPatterns = Math.ceil(this.rows / (patternHeight * 1.5));
+    // Place patterns according to configuration
+    const placement = this.config.patternPlacement || {
+      spacing: 1.5,
+      probability: 0.7,
+      randomOffset: 5
+    };
+
+    const { spacing, probability, randomOffset } = placement;
     
-    // Place patterns in a grid with some spacing
+    const horizontalPatterns = Math.ceil(this.cols / (patternWidth * spacing));
+    const verticalPatterns = Math.ceil(this.rows / (patternHeight * spacing));
+    
     for (let vpat = 0; vpat < verticalPatterns; vpat++) {
       for (let hpat = 0; hpat < horizontalPatterns; hpat++) {
-        // Add some randomness to the starting position of each pattern
-        const offsetX = Math.floor(Math.random() * 5);
-        const offsetY = Math.floor(Math.random() * 5);
-        
-        const startX = Math.floor(hpat * patternWidth * 1.5) + offsetX;
-        const startY = Math.floor(vpat * patternHeight * 1.5) + offsetY;
-        
-        // Only place the pattern with 70% probability
-        if (Math.random() < 0.7) {
-          // Copy pattern to grid
-          for (let i = 0; i < patternHeight; i++) {
-            for (let j = 0; j < patternWidth; j++) {
-              const row = (startY + i) % this.rows;
-              const col = (startX + j) % this.cols;
-              if (basePattern[i][j]) {
-                grid[row][col] = true;
-              }
-            }
-          }
+        if (Math.random() < probability) {
+          const offsetX = Math.floor(Math.random() * randomOffset);
+          const offsetY = Math.floor(Math.random() * randomOffset);
+          
+          const startX = Math.floor(hpat * patternWidth * spacing) + offsetX;
+          const startY = Math.floor(vpat * patternHeight * spacing) + offsetY;
+          
+          this.placePatternOnGrid(grid, pattern, startX, startY);
         }
       }
     }
     
     return grid;
+  }
+
+  placePatternOnGrid(grid, pattern, startX, startY) {
+    for (let i = 0; i < pattern.length; i++) {
+      for (let j = 0; j < pattern[0].length; j++) {
+        if (pattern[i][j]) {
+          const row = (startY + i) % this.rows;
+          const col = (startX + j) % this.cols;
+          grid[row][col] = true;
+        }
+      }
+    }
   }
 
   drawPixelHeart(x, y, size) {
@@ -205,11 +228,11 @@ class GameOfLife {
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
         if (this.grid[i][j]) {
-          const centerX = j * this.cellSize + this.cellSize/2;
-          const centerY = i * this.cellSize + this.cellSize/2;
+          const centerX = j * this.config.cellSize + this.config.cellSize/2;
+          const centerY = i * this.config.cellSize + this.config.cellSize/2;
           // Use different color for new cells
-          this.ctx.fillStyle = this.newCells.has(`${i},${j}`) ? this.colors.newCell : this.colors.cell;
-          this.drawPixelHeart(centerX, centerY, this.cellSize * 0.9);
+          this.ctx.fillStyle = this.newCells.has(`${i},${j}`) ? this.config.colors.newCell : this.config.colors.cell;
+          this.config.cellRenderer(centerX, centerY, this.config.cellSize * 0.9);
         }
       }
     }
@@ -271,7 +294,7 @@ class GameOfLife {
       if (this.running) {
         this.update();
       }
-    }, 200);
+    }, this.config.updateInterval);
   }
 
   start() {
@@ -284,10 +307,44 @@ class GameOfLife {
   stop() {
     this.running = false;
   }
+
+  setupEventListeners() {
+    this.playPauseBtn.addEventListener('click', () => this.togglePlayPause());
+    window.addEventListener('resize', () => this.setupCanvas());
+  }
 }
 
-// Initialize and start the game when the page loads
+// Example usage:
 document.addEventListener('DOMContentLoaded', () => {
+  // Basic usage with defaults
   const game = new GameOfLife();
+
+  // Or with custom configuration
+  /*
+  const customGame = new GameOfLife({
+    canvasId: 'custom-canvas',
+    playPauseBtnId: 'custom-button',
+    cellSize: 15,
+    updateInterval: 150,
+    colors: {
+      cell: '#ff0000',
+      newCell: '#00ff00'
+    },
+    dimensions: {
+      width: 800,
+      height: 600
+    },
+    initialPattern: [
+      [0, 1, 0],
+      [0, 0, 1],
+      [1, 1, 1]
+    ],
+    patternPlacement: {
+      spacing: 2,
+      probability: 0.5,
+      randomOffset: 3
+    }
+  });
+  */
 });
 </script>
