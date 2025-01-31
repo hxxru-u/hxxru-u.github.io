@@ -24,23 +24,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 const svg = div.querySelector('svg');
                 
                 if (svg) {
+                    // Extract CSS rules from style tag
+                    const styleTag = svg.querySelector('style');
+                    const cssRules = {};
+                    if (styleTag) {
+                        const cssText = styleTag.textContent;
+                        // Parse CSS rules like .B{fill:#0f0f0f}
+                        cssText.match(/\.[A-Z]{1,2}\{fill:#[0-9a-f]{6}\}/g)?.forEach(rule => {
+                            const className = rule.match(/\.[A-Z]{1,2}/)[0].substring(1);
+                            const fillColor = rule.match(/#[0-9a-f]{6}/)[0];
+                            cssRules[className] = fillColor;
+                        });
+                        // Remove the style tag since we'll inline the styles
+                        styleTag.remove();
+                    }
+
                     // Set SVG attributes for proper sizing
                     svg.setAttribute('width', '100%');
                     svg.setAttribute('height', '100%');
                     svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
                     
-                    // Process all elements that might have fill or opacity
-                    const elements = svg.querySelectorAll('*');
-                    elements.forEach(el => {
-                        // If element has fill="rgb(...)" or fill="#..." or opacity, preserve it
-                        if (!el.getAttribute('fill') && !el.getAttribute('opacity')) {
-                            el.style.fill = 'currentColor';
-                        }
-                        
-                        // Remove any external classes that might interfere
-                        const classAttr = el.getAttribute('class');
-                        if (classAttr && classAttr.includes('ai-style-change')) {
-                            el.removeAttribute('class');
+                    // Process all paths and inline their styles
+                    const paths = svg.querySelectorAll('path');
+                    paths.forEach(path => {
+                        const classAttr = path.getAttribute('class');
+                        if (classAttr && cssRules[classAttr]) {
+                            // Inline the fill color from CSS
+                            path.setAttribute('fill', cssRules[classAttr]);
+                            path.removeAttribute('class');
+                        } else if (!path.getAttribute('fill')) {
+                            // Use theme color for paths without specific fill
+                            path.setAttribute('fill', 'currentColor');
                         }
                     });
                     

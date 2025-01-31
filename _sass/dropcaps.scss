@@ -19,28 +19,12 @@
 .dropcap.dropcap-svg {
     padding: 0;
     background: none;  /* Remove background for SVG */
+    color: $text-color;  /* Set base color for currentColor references */
     
     svg {
         width: 100%;
         height: 100%;
         display: block;
-        color: $text-color;  /* Set base color for currentColor references */
-        
-        /* Only set fill for elements without explicit fill values */
-        *:not([fill]):not([opacity]) {
-            fill: currentColor;
-        }
-        
-        /* Remove any strokes that might interfere */
-        [stroke] {
-            stroke: none;
-        }
-        
-        /* Override any unwanted external styles */
-        [class*="ai-style-change"] {
-            fill: inherit;
-            color: inherit;
-        }
     }
 }
 
