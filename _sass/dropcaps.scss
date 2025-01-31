@@ -24,19 +24,23 @@
         width: 100%;
         height: 100%;
         display: block;
-    }
-    
-    /* Force SVG colors regardless of other styles */
-    svg, path, use, symbol {
-        fill: $text-color !important;  /* Use theme text color */
-        stroke: none !important;
-        color: $text-color !important;
-    }
-    
-    /* Override any AI-added classes */
-    [class*="ai-style-change"] {
-        fill: $text-color !important;
-        color: $text-color !important;
+        color: $text-color;  /* Set base color for currentColor references */
+        
+        /* Only set fill for elements without explicit fill values */
+        *:not([fill]):not([opacity]) {
+            fill: currentColor;
+        }
+        
+        /* Remove any strokes that might interfere */
+        [stroke] {
+            stroke: none;
+        }
+        
+        /* Override any unwanted external styles */
+        [class*="ai-style-change"] {
+            fill: inherit;
+            color: inherit;
+        }
     }
 }
 

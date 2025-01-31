@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (availableLetters.includes(letter)) {
         // Set styles first
         dropcap.style.display = 'inline-block';
-        dropcap.style.width = '3.5em';  // Match the font-size we were using before
+        dropcap.style.width = '3.5em';
         dropcap.style.height = '3.5em';
         dropcap.style.verticalAlign = 'middle';
         dropcap.style.marginRight = '0.1em';
         dropcap.style.marginBottom = '-0.1em';
 
-        // Fetch and insert the SVG content directly
+        // Fetch and process the SVG
         fetch(`/assets/fonts/dropcaps/svg-dropcaps/${letter}.svg`)
             .then(response => response.text())
             .then(svgContent => {
@@ -24,16 +24,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 const svg = div.querySelector('svg');
                 
                 if (svg) {
-                    // Ensure SVG has proper attributes
+                    // Set SVG attributes for proper sizing
                     svg.setAttribute('width', '100%');
                     svg.setAttribute('height', '100%');
                     svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
                     
-                    // Force the fill color through inline style
-                    const elements = svg.querySelectorAll('path, use, symbol, g');
+                    // Process all elements that might have fill or opacity
+                    const elements = svg.querySelectorAll('*');
                     elements.forEach(el => {
-                        el.style.fill = 'currentColor';
-                        el.style.color = 'currentColor';
+                        // If element has fill="rgb(...)" or fill="#..." or opacity, preserve it
+                        if (!el.getAttribute('fill') && !el.getAttribute('opacity')) {
+                            el.style.fill = 'currentColor';
+                        }
+                        
+                        // Remove any external classes that might interfere
+                        const classAttr = el.getAttribute('class');
+                        if (classAttr && classAttr.includes('ai-style-change')) {
+                            el.removeAttribute('class');
+                        }
                     });
                     
                     dropcap.innerHTML = svg.outerHTML;
