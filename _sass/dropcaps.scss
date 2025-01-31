@@ -8,7 +8,7 @@
     padding-top: 0.1em;
     padding-right: 0.1em;
     margin-bottom: -0.1em;
-    font-family: 'DropcapTTF', serif;  /* TTF fallback */
+    font-family: 'DropcapTTF' !important;  /* Force TTF font */
     color: $text-color;
     background-color: $background-color;
     font-weight: normal;

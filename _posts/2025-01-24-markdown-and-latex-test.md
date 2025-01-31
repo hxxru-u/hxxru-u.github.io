@@ -5,6 +5,7 @@ categories:
   - blog
 tags:
   - LaTeX
+  - Test
 mathjax: true
 excerpt: "test"
 ---

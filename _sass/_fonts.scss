@@ -1,33 +1,233 @@
-/* TTF Dropcap fonts - for all letters */
+/* TTF Dropcap fonts - load each letter individually */
 @font-face {
     font-family: 'DropcapTTF';
-    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-A.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-B.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-C.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-D.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-E.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-F.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-G.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-H.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-I.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-J.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-K.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-L.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-M.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-N.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-O.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-P.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-Q.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-R.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-S.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-T.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-U.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-V.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-W.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-X.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-Y.ttf') format('truetype'),
-         url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-Z.ttf') format('truetype');
-    unicode-range: U+0041-005A;  /* A-Z */
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-A.ttf') format('truetype');
+    unicode-range: U+0041;  /* A */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-B.ttf') format('truetype');
+    unicode-range: U+0042;  /* B */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-C.ttf') format('truetype');
+    unicode-range: U+0043;  /* C */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-D.ttf') format('truetype');
+    unicode-range: U+0044;  /* D */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-E.ttf') format('truetype');
+    unicode-range: U+0045;  /* E */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-F.ttf') format('truetype');
+    unicode-range: U+0046;  /* F */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-G.ttf') format('truetype');
+    unicode-range: U+0047;  /* G */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-H.ttf') format('truetype');
+    unicode-range: U+0048;  /* H */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-I.ttf') format('truetype');
+    unicode-range: U+0049;  /* I */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-J.ttf') format('truetype');
+    unicode-range: U+004A;  /* J */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-K.ttf') format('truetype');
+    unicode-range: U+004B;  /* K */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-L.ttf') format('truetype');
+    unicode-range: U+004C;  /* L */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-M.ttf') format('truetype');
+    unicode-range: U+004D;  /* M */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-N.ttf') format('truetype');
+    unicode-range: U+004E;  /* N */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-O.ttf') format('truetype');
+    unicode-range: U+004F;  /* O */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-P.ttf') format('truetype');
+    unicode-range: U+0050;  /* P */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-Q.ttf') format('truetype');
+    unicode-range: U+0051;  /* Q */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-R.ttf') format('truetype');
+    unicode-range: U+0052;  /* R */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-S.ttf') format('truetype');
+    unicode-range: U+0053;  /* S */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-T.ttf') format('truetype');
+    unicode-range: U+0054;  /* T */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-U.ttf') format('truetype');
+    unicode-range: U+0055;  /* U */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-V.ttf') format('truetype');
+    unicode-range: U+0056;  /* V */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-W.ttf') format('truetype');
+    unicode-range: U+0057;  /* W */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-X.ttf') format('truetype');
+    unicode-range: U+0058;  /* X */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-Y.ttf') format('truetype');
+    unicode-range: U+0059;  /* Y */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('/assets/fonts/dropcaps/ttf-dropcaps/GoudyInitialen-Z.ttf') format('truetype');
+    unicode-range: U+005A;  /* Z */
     font-weight: normal;
     font-style: normal;
     font-display: block;
