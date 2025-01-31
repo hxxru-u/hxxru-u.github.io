@@ -44,15 +44,6 @@ i will test experimental features here
 - [ ] Neuroscience
 - [ ] Talking to Claude
 
-### Web Dropcap notes
-
-How do we implement good dropcaps for web pages in the first place? Web dropcaps posed several challenges to our (Gwern's) implementation of 5 dropcap fonts in March 2019:
-          
-            browser positioning: cross-browser support is nominally good but browsers differ subtly in spacing details, which means that a dropcap which looks good in Google Chrome will look bad in Mozilla Firefox & vice-versa. We solve this with hard work & CSS.
-            font size: dropcap fonts are often quite large, and waste bandwidth & time while being both purely decorative & highly user-visible; andWe solve this by subsetting: splitting dropcap fonts into one font file per letter, so instead of downloading a megabyte font file with all the dropcaps, the browser only downloads 4–20kb and it’s much faster.Usually only 1 dropcap is used on a page, but a typical dropcap font will slowly download as much as a megabyte in order to render 1 single letter. CSS font loads avoid downloading font files which are entirely unused, but they must download the entire font file if anything in it is used, so it doesn’t matter that only one letter gets used. To avoid this, we split each dropcap font up into a single font file per letter and use CSS to load all the font files; since only 1 font file is used at all, only 1 gets downloaded, and it will be ~4kb rather than 168kb. This has been done for all the dropcap fonts used, and the necessary CSS can be seen in fonts.css.
-            no dark mode: dropcaps do not usually come with dark-mode in mind.We focus on monochrome dropcaps which will look good when inverted in dark-mode, and so don’t really need a separate dark-mode. (This would not work so well for more illustrated or ‘historiated’ initials, which is why the dropcat had to come with separate light & dark mode sets.)
-          
-          Dropcaps are set in the Markdown page metadata, parsed by Hakyll to substitute into the final HTML as a <body> class, which applies page-wide to ‘the first letter of the first paragraph after an .abstract’ (which allows sub-essays like appendices to get dropcaps of their own as long as they have a written abstract). dropcaps can be forcibly set on specific paragraphs as well using a <div> wrapper, which is useful for testing.
 
 
 # Dropcap Implementation
@@ -111,5 +102,3 @@ assets/
 - TTF provides complete alphabet coverage
 - Browser-specific CSS ensures consistent positioning
 ```
-
-Would you like me to add any additional sections to this summary?

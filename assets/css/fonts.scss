@@ -1,0 +1,119 @@
+---
+---
+
+/* SVG Dropcap fonts - only for specific letters */
+@font-face {
+    font-family: 'DropcapSVG';
+    src: url('../fonts/dropcaps/svg-dropcaps/a.svg#font') format('svg');
+    unicode-range: U+0041, U+0061;  /* A and a */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapSVG';
+    src: url('../fonts/dropcaps/svg-dropcaps/b.svg#font') format('svg');
+    unicode-range: U+0042, U+0062;  /* B and b */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapSVG';
+    src: url('../fonts/dropcaps/svg-dropcaps/c.svg#font') format('svg');
+    unicode-range: U+0043, U+0063;  /* C and c */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapSVG';
+    src: url('../fonts/dropcaps/svg-dropcaps/f.svg#font') format('svg');
+    unicode-range: U+0046, U+0066;  /* F and f */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapSVG';
+    src: url('../fonts/dropcaps/svg-dropcaps/g.svg#font') format('svg');
+    unicode-range: U+0047, U+0067;  /* G and g */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapSVG';
+    src: url('../fonts/dropcaps/svg-dropcaps/i.svg#font') format('svg');
+    unicode-range: U+0049, U+0069;  /* I and i */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapSVG';
+    src: url('../fonts/dropcaps/svg-dropcaps/q.svg#font') format('svg');
+    unicode-range: U+0051, U+0071;  /* Q and q */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapSVG';
+    src: url('../fonts/dropcaps/svg-dropcaps/t.svg#font') format('svg');
+    unicode-range: U+0054, U+0074;  /* T and t */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DropcapSVG';
+    src: url('../fonts/dropcaps/svg-dropcaps/v.svg#font') format('svg');
+    unicode-range: U+0056, U+0076;  /* V and v */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+/* TTF Dropcap fonts - for all letters */
+@font-face {
+    font-family: 'DropcapTTF';
+    src: url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-A.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-B.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-C.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-D.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-E.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-F.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-G.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-H.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-I.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-J.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-K.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-L.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-M.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-N.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-O.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-P.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-Q.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-R.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-S.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-T.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-U.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-V.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-W.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-X.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-Y.ttf') format('truetype'),
+         url('../fonts/dropcaps/ttf-dropcaps/GoudyInitialen-Z.ttf') format('truetype');
+    unicode-range: U+0041-005A;  /* A-Z */
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
