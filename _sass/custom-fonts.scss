@@ -3,14 +3,12 @@
 
 /* Set Korean font for all Korean text */
 :lang(ko) {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'Noto Serif KR', $serif;
   font-weight: 200;
 }
 
-/* Alternatively, set Korean font globally while maintaining fallbacks */
-body {
-  font-family: $global-font-family, 'Noto Serif KR', serif;
-}
+/* Set Korean font in the global font stack */
+$global-font-family: $sans-serif, 'Noto Serif KR', $serif !default;
 
 /* Ensure proper rendering for mixed-language content */
 html {

@@ -4,6 +4,9 @@
 
 @charset "utf-8";
 
+/* Import variables first */
+@import "variables";
+
 /* Import custom skin variables first */
 @import "custom-skin";
 @import "custom-post";
