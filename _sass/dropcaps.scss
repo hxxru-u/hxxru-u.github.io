@@ -4,13 +4,13 @@
 .dropcap {
     float: left;
     /* Set size relative to paragraph line height:
-       - Reducing from 8.5em to 7.5em to span exactly 5 lines
+       - Matching SVG size of 7.5em
     */
     font-size: 7.5em;
-    line-height: 0.95;  /* Tighter line height for better vertical fit */
-    padding-top: 0.02em;
-    padding-right: 0.15em;
-    margin-bottom: -0.02em;
+    line-height: 1;  
+    padding-top: 0em;
+    padding-right: 0em;
+    margin-bottom: 0em;
     font-family: 'DropcapTTF' !important;  /* Force TTF font */
     color: $text-color;
     background-color: $background-color;
@@ -50,13 +50,13 @@
 @-moz-document url-prefix() {
     .dropcap:not(.dropcap-svg) {
         padding-top: 0.04em;
-        margin-bottom: -0.04em;
+        margin-bottom: 0;  /* Match SVG */
     }
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     .dropcap:not(.dropcap-svg) {
         padding-top: 0.02em;
-        margin-bottom: -0.02em;
+        margin-bottom: 0;  /* Match SVG */
     }
 }
