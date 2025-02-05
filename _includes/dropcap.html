@@ -5,7 +5,7 @@
     {% assign first_paragraph = first_paragraph | split: '<p>' | last %}
   {% endif %}
   {% assign first_char = first_paragraph | strip_html | truncate: 1, "" %}
-  {% assign remaining_first_para = first_paragraph | strip_html | slice: 1, first_paragraph.size %}
+  {% assign remaining_first_para = first_paragraph | remove_first: first_char %}
   
   {% if page.background_game %}
     {% assign remaining_paras = paragraphs | shift %}
