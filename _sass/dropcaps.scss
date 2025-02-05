@@ -66,10 +66,11 @@
 @media not all and (min-resolution:.001dpcm) {
     @supports (-webkit-appearance:none) {
         .dropcap:not(.dropcap-svg) {
+            margin-top: -0.1em;  /* Move the entire dropcap up */
             padding-top: 0.02em;
-            margin-bottom: -0.08em;  /* Smaller negative margin for Safari */
-            height: 0.9em;  /* Adjusted height for WebKit */
-            line-height: 0.9;  /* Match height for consistent spacing */
+            margin-bottom: -0.12em;  /* Keep the same bottom margin */
+            height: 1em;  /* Keep full height */
+            line-height: 1;
         }
     }
 }
