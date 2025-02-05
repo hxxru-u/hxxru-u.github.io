@@ -3,11 +3,11 @@
 /* Base dropcap styles */
 .dropcap {
     float: left;
-    /* Set size relative to paragraph line height:
-       - Matching SVG size of 7.5em
+    /* Set size relative to paragraph line height
     */
     font-size: 8.5em;
     line-height: 1;  
+    height: 1em;  /* Ensure float continues for full height */
     padding-top: 0.02em;
     padding-right: 0.08em;
     margin-bottom: -0.12em;
@@ -50,13 +50,13 @@
 @-moz-document url-prefix() {
     .dropcap:not(.dropcap-svg) {
         padding-top: 0.04em;
-        margin-bottom: 0;  /* Match SVG */
+        margin-bottom: -0.12em;
     }
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     .dropcap:not(.dropcap-svg) {
         padding-top: 0.02em;
-        margin-bottom: 0;  /* Match SVG */
+        margin-bottom: -0.12em;
     }
 }
