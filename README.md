@@ -25,7 +25,7 @@ i will test experimental features here
 
 ### Posts to Write
 
-- [ ] favorites: people, resources, albums(topsters), posts, etc
+- [ ] favorites: people, resources, albums, posts, etc
 - [ ] Influences
 - [ ] Meta-post: talking to claude
 - [ ] Intuitions for what LLMs are
@@ -35,6 +35,9 @@ i will test experimental features here
 - [ ] Embedded Agency
 - [ ] Complex Novelty
 - [ ] On Translation
+- [ ] Eudaimonia
+- [ ] Complex Novelty
+- [ ] My Knowledge Garden (I should move to Quartz)
  
 ### Tags to Make
 

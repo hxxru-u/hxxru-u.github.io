@@ -6,9 +6,12 @@ categories:
 tags:
   - Dynamical Systems
   - Mathematics
+  - Test
 mathjax: true
 excerpt: "On chaotic attractors."
 ---
+
+*this is a test post for markdown math rendering*
 
 The concept of a chaotic attractor lies at the heart of chaos theory, representing a geometric structure in phase space that exhibits both order and unpredictability. Let's explore its rigorous mathematical definition.
 
