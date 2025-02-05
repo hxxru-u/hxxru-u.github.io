@@ -1,5 +1,5 @@
 ---
-title: "hamilelik rüyası"
+title: "hamilelik rüyası (태몽집)"
 layout: background_game
 tags:
   - Poetry
@@ -8,7 +8,7 @@ tags:
 excerpt: "."
 ---
 
-**HUI-JUN KIM (b. 1994)**[^1][^2]
+**김희준 (b. 1994)**[^1][^2]
 
 [^1]: Originally appearing in 『언니의 나라에선 누구도 시들지 않기 때문』 (2020, 문학동네) 
 [^2]: *ambiguated from the Korean into various languages by Haru Kim*

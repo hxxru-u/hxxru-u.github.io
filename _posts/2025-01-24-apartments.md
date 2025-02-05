@@ -9,7 +9,7 @@ excerpt: "."
 ---
 
 
-**SEUNG-YEOL PARK (b. 1993)**[^1][^2]
+**박승열 (b. 1993)**[^1][^2]
 
 [^1]: Originally appearing in 『감자가 나를 보고 있었다』 (2022, 문학동네) 
 [^2]: *translated from the Korean by Haru Kim*
