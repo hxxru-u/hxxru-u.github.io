@@ -12,6 +12,16 @@ dropcap: true
 
 Here are my thoughts on *what art is*, and why it is so fundamental to my worldview.
 
-The act of creation is an expression of agency - a way of saying "I was here, and I made this." 
+Basic outline:
+
+-Art as labeled, communicated information
+
+-(Somewhat) Optimized for compressibility: introduce Schmidhuber, Dopamine RPE Coding
+
+-"Meaningfulness" is subjective because your brain is your own!
+
+-Art in broader culture
+
+-Pedagogy, etc...
 
 (Work in Progress)

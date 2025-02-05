@@ -16,6 +16,7 @@
     background-color: $background-color;
     font-weight: normal;
     font-style: normal;
+    -webkit-text-size-adjust: none;  /* Base property for WebKit detection */
 }
 
 /* SVG-specific styles - override base styles */
@@ -54,23 +55,21 @@
     }
 }
 
-/* Chrome/Edge */
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (not url-prefix('')) {
+/* Chrome */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     .dropcap:not(.dropcap-svg) {
         padding-top: 0.02em;
         margin-bottom: -0.12em;
     }
 }
 
-/* Safari/WebKit (including DuckDuckGo) */
-@media not all and (min-resolution:.001dpcm) {
-    @supports (-webkit-appearance:none) {
-        .dropcap:not(.dropcap-svg) {
-            margin-top: -0.1em;  /* Move the entire dropcap up */
-            padding-top: 0.02em;
-            margin-bottom: -0.12em;  /* Keep the same bottom margin */
-            height: 1em;  /* Keep full height */
-            line-height: 1;
-        }
+/* Safari/WebKit */
+@supports (-webkit-text-size-adjust: none) and (not (-ms-accelerator: true)) {
+    .dropcap:not(.dropcap-svg) {
+        margin-top: -0.1em;  /* Move the entire dropcap up */
+        padding-top: 0.02em;
+        margin-bottom: -0.12em;
+        height: 1em;
+        line-height: 1;
     }
 }
