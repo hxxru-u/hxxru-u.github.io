@@ -54,9 +54,22 @@
     }
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
+/* Chrome/Edge */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (not url-prefix('')) {
     .dropcap:not(.dropcap-svg) {
         padding-top: 0.02em;
         margin-bottom: -0.12em;
+    }
+}
+
+/* Safari/WebKit (including DuckDuckGo) */
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+        .dropcap:not(.dropcap-svg) {
+            padding-top: 0.02em;
+            margin-bottom: -0.08em;  /* Smaller negative margin for Safari */
+            height: 0.9em;  /* Adjusted height for WebKit */
+            line-height: 0.9;  /* Match height for consistent spacing */
+        }
     }
 }
