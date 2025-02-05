@@ -3,20 +3,30 @@
 /* Base dropcap styles */
 .dropcap {
     float: left;
-    /* Set size relative to paragraph line height
-    */
+    /* Set size relative to paragraph line height */
     font-size: 8.5em;
-    line-height: 1;  
+    line-height: 1;
     height: 1em;  /* Ensure float continues for full height */
     padding-top: 0.02em;
     padding-right: 0.08em;
     margin-bottom: -0.12em;
+    margin-top: -0.1em;  /* Move up by default */
     font-family: 'DropcapTTF' !important;  /* Force TTF font */
     color: $text-color;
     background-color: $background-color;
     font-weight: normal;
     font-style: normal;
-    -webkit-text-size-adjust: none;  /* Base property for WebKit detection */
+
+    /* Chrome-specific adjustments */
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+        margin-top: 0;  /* Reset margin-top for Chrome */
+    }
+
+    /* Firefox-specific adjustments */
+    @-moz-document url-prefix() {
+        margin-top: 0;  /* Reset margin-top for Firefox */
+        padding-top: 0.04em;
+    }
 }
 
 /* SVG-specific styles - override base styles */
@@ -29,6 +39,7 @@
     height: 7.5em;
     margin-right: 0.15em;
     margin-bottom: 0;
+    margin-top: 0;  /* Reset margin for SVG */
     line-height: 1;
     
     svg {
@@ -44,32 +55,5 @@
                 fill: unset;  /* Don't override inline styles */
             }
         }
-    }
-}
-
-/* Browser-specific adjustments for TTF */
-@-moz-document url-prefix() {
-    .dropcap:not(.dropcap-svg) {
-        padding-top: 0.04em;
-        margin-bottom: -0.12em;
-    }
-}
-
-/* Chrome */
-@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    .dropcap:not(.dropcap-svg) {
-        padding-top: 0.02em;
-        margin-bottom: -0.12em;
-    }
-}
-
-/* Safari/WebKit */
-@supports (-webkit-text-size-adjust: none) and (not (-ms-accelerator: true)) {
-    .dropcap:not(.dropcap-svg) {
-        margin-top: -0.1em;  /* Move the entire dropcap up */
-        padding-top: 0.02em;
-        margin-bottom: -0.12em;
-        height: 1em;
-        line-height: 1;
     }
 }
