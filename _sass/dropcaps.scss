@@ -27,6 +27,17 @@
         margin-top: 0;  /* Reset margin-top for Firefox */
         padding-top: 0.04em;
     }
+
+    /* Ensure proper text formatting within dropcap paragraph */
+    & + span {
+        display: inline;
+        em, i {
+            font-style: italic;
+        }
+        strong, b {
+            font-weight: bold;
+        }
+    }
 }
 
 /* SVG-specific styles - override base styles */
